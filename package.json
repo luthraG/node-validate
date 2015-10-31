@@ -5,6 +5,10 @@
 	"devDependencies" : {
 		"mocha"	: ""
 	},
+	"keywords"		  : [
+	    "validator", "validation", "validate", "assert",
+	 	"node-validate", "node-validation"
+	],
 	"repository"      : {
 		"type" : "git",
 		"url"  : "https://github.com/luthraG/node-validate.git"
