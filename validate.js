@@ -1,5 +1,8 @@
 
-var base64 = /^([A-Za-z0-9+\/]{4})*([A-Za-z0-9+\/]{4}|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{2}==)$/i;
+var        alpha = /^[A-Z]+$/i,
+    alphanumeric = /^[0-9A-Z]+$/i,
+          base64 = /^([A-Za-z0-9+\/]{4})*([A-Za-z0-9+\/]{4}|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{2}==)$/i,
+     hexadecimal = /^[0-9A-F]+$/i;
 
 // Check if the value is string or not
 function isString (value) {
@@ -92,6 +95,30 @@ function isBase64(value) {
 	return false;
 }
 
+// Check if the string contains only alphabets, both upper and lower case
+function isAlpha(value) {
+	if (isString(value))
+		return alpha.test(value);
+
+	return false;
+}
+
+// Check if the string contains alphabets and numbers
+function isAlphanumeric(value) {
+	if (isString(value))
+		return alphanumeric.test(value);
+
+	return false;
+}
+
+// Check if the string is a hexadecimal number
+function isHexadecimal(value) {
+	if (isString(value))
+		return hexadecimal.test(value);
+
+	return false;
+}
+
 // Check if the string is empty
 function isEmpty (value) {
 	return (value == null || value.length == 0);
@@ -108,19 +135,22 @@ function isBlank (value) {
 }
 
 exports = module.exports = {
-	isString     : isString,
-	isNumber     : isNumber,
-	isArray		 : isArray,
-	isObject	 : isObject,
-	isTrue		 : isTrue,
-	isFalse		 : isFalse,
-	isLowerCase  : isLowerCase,
-	isUpperCase  : isUpperCase,
-	isTitleCase  : isTitleCase,
-	isNumber     : isNumber,
-	isJSON       : isJSON,
-	isBase64     : isBase64,
-	isEmpty      : isEmpty,
-	isBlank      : isBlank,
-	isWhiteSpace : isWhiteSpace 
+	isString       : isString,
+	isNumber       : isNumber,
+	isArray		   : isArray,
+	isObject	   : isObject,
+	isTrue		   : isTrue,
+	isFalse		   : isFalse,
+	isLowerCase    : isLowerCase,
+	isUpperCase    : isUpperCase,
+	isTitleCase    : isTitleCase,
+	isNumber       : isNumber,
+	isJSON         : isJSON,
+	isBase64       : isBase64,
+	isEmpty        : isEmpty,
+	isBlank        : isBlank,
+	isWhiteSpace   : isWhiteSpace,
+	isAlpha        : isAlpha,
+	isAlphanumeric : isAlphanumeric,
+	isHexadecimal  : isHexadecimal
 };

@@ -18,10 +18,13 @@ ratify.isBase64('bm9kZS1yYXRpZnk='); // true
 
 ### Validators
 
+- **isAlpha(str)** - check if the string contains only alphabets, both upper and lower case.
+- **isAlphanumeric(str)** - check if the string contains alphabets and numbers.
 - **isArray(value)** - check if the value passed is Array.
 - **isBase64(str)** - check if a string is base64 encoded.
 - **isBlank(str)** - Check if a string is blank.
 - **isEmpty(str)** - check if a string is empty. A string containing only whitespaces is blank string but not empty string.
+- **isHexadecimal(str)** - Check if the string is a hexadecimal number.
 - **isFalse(value)** - check if the value passed is false.
 - **isJSON(str)** - check if a string is a valid JSON string.
 - **isLowerCase(str)** - check if a string is in lowercase.
