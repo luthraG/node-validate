@@ -1,0 +1,20 @@
+{
+	"name"            : "node-validate.js",
+	"version"         : "0.0.1",
+	"description"     : "A fast node validation library",
+	"devDependencies" : {
+		"mocha"	: ""
+	},
+	"repository"      : {
+		"type" : "git",
+		"url"  : "https://github.com/luthraG/node-validate.git"
+	},
+	"bugs"            : {
+		"url" : "https://github.com/luthraG/node-validate/issues"
+	},
+	"author"          : {
+		"name"  : "Gaurav Luthra",
+		"email" : "luthra.zenith@gmail.com"
+	}
+
+}
