@@ -1,13 +1,11 @@
 {
-	"name"            : "node-validate.js",
+	"name"            : "node-ratify",
 	"version"         : "0.0.1",
-	"description"     : "A fast node validation library",
-	"devDependencies" : {
-		"mocha"	: ""
-	},
+	"description"     : "A fast validation library",
 	"keywords"		  : [
 	    "validator", "validation", "validate", "assert",
-	 	"node-validate", "node-validation"
+	 	"node-validate", "node-validation", "ratify",
+	 	"node-valid", "valid", "node-ratify"
 	],
 	"repository"      : {
 		"type" : "git",
