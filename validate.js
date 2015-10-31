@@ -16,6 +16,11 @@ function isArray(value) {
 	return (Object.prototype.toString.call(value) === '[object Array]');
 }
 
+// Check if the value is Object or not
+function isObject(value) {
+	return (Object.prototype.toString.call(value) === '[object Object]');
+}
+
 // Check if the value is Boolean(true) or not
 function isTrue (value) {
 	return (value === true);
@@ -104,6 +109,11 @@ function isBlank (value) {
 
 exports = module.exports = {
 	isString     : isString,
+	isNumber     : isNumber,
+	isArray		 : isArray,
+	isObject	 : isObject,
+	isTrue		 : isTrue,
+	isFalse		 : isFalse,
 	isLowerCase  : isLowerCase,
 	isUpperCase  : isUpperCase,
 	isTitleCase  : isTitleCase,
