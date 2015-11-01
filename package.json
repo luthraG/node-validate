@@ -1,7 +1,7 @@
 {
 	"name"            : "node-ratify",
-	"version"         : "1.0.2",
-	"description"     : "A fast node validation library",
+	"version"         : "1.0.3",
+	"description"     : "A rich and efficient node validation library for String, Number, Date and Javascript Objects",
 	"main" 			  : "./validate.js",
 	"keywords"		  : [
 	    "validator", "validation", "validate", "assert",
@@ -19,5 +19,4 @@
 		"name"  : "Gaurav Luthra",
 		"email" : "luthra.zenith@gmail.com"
 	}
-
 }
