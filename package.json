@@ -1,7 +1,7 @@
 {
 	"name"            : "node-ratify",
-	"version"         : "1.0.1",
-	"description"     : "A fast validation library",
+	"version"         : "1.0.2",
+	"description"     : "A fast node validation library",
 	"main" 			  : "./validate.js",
 	"keywords"		  : [
 	    "validator", "validation", "validate", "assert",
