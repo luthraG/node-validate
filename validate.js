@@ -28,6 +28,7 @@ var uuid = {
 //     isString('hello'); // returns true
 //     isString(new String('hellow')); // returns true
 //
+// ************************************************************************************************
 function isString (value) {
 	return (Object.prototype.toString.call(value) === '[object String]');
 }
@@ -45,6 +46,7 @@ function isString (value) {
 //     isNumber(7); // returns true
 //     isNumber(new Number(7)); // returns true
 //
+// ************************************************************************************************
 function isNumber (value) {
 	return (Object.prototype.toString.call(value) === '[object Number]');
 }
@@ -62,6 +64,7 @@ function isNumber (value) {
 //     isArray(['5', '7']); // returns true
 //     isArray(new Array(7, 11)); // returns true
 //
+// ************************************************************************************************
 function isArray(value) {
 	return (Object.prototype.toString.call(value) === '[object Array]');
 }
@@ -80,6 +83,7 @@ function isArray(value) {
 //     isObject(new Array(7, 11)); // returns true
 //     isObject(''); // returns false
 //
+// ************************************************************************************************
 function isObject(value) {
 	return (typeof value === 'object');
 }
@@ -97,6 +101,7 @@ function isObject(value) {
 //     isStrictObject(new Array(7, 11)); // returns false
 //     isStrictObject(''); // returns false
 //
+// ************************************************************************************************
 function isStrictObject(value) {
 	return (Object.prototype.toString.call(value) === '[object Object]');
 }
@@ -113,6 +118,7 @@ function isStrictObject(value) {
 //     isRegExp(/abc/); // returns true
 //     isRegExp(new RegExp('abc')); // returns true
 //
+// ************************************************************************************************
 function isRegExp(value) {
 	return (Object.prototype.toString.call(value) === '[object RegExp]');
 }
@@ -123,6 +129,13 @@ function isRegExp(value) {
 //
 // Check if the value is Boolean object or not
 //
+// Examples:
+// 		isStrictBoolean(new Boolean(true)) // returns true
+// 		isStrictBoolean(new Boolean(false)) // returns true
+// 		isStrictBoolean(true) // returns true
+// 		isStrictBoolean(false) // returns true
+//
+// ************************************************************************************************
 function isStrictBoolean(value) {
 	return (Object.prototype.toString.call(value) === '[object Boolean]');
 }
@@ -133,6 +146,14 @@ function isStrictBoolean(value) {
 //
 // Check if the value is Boolean or not
 //
+// Examples:
+// 		isBoolean() // returns false
+// 		isBoolean(new Boolean(false)) // returns true
+// 		isBoolean(true) // returns true
+// 		isBoolean('1') // returns true
+// 		isBoolean(false) // returns true
+//
+// ************************************************************************************************
 function isBoolean(value) {
 	if (isNull(value))
 		return false;
@@ -146,6 +167,18 @@ function isBoolean(value) {
 //
 // Check if the value is Function or not
 //
+// Examples:
+// function test() {return true;}
+// function test2() {};
+// var arr = ['Item1', 'Item2', 'Item3'];
+// var obj = {};
+//  	isFunction(test) // returns true
+//  	isFunction(test2) // returns true
+//  	isFunction(arr) // returns false
+//  	isFunction(obj) // returns false
+//  	isFunction(null) // returns false
+//
+// ************************************************************************************************
 function isFunction(value) {
 	return (Object.prototype.toString.call(value) === '[object Function]');
 }
@@ -156,6 +189,12 @@ function isFunction(value) {
 //
 // Check if the value is Boolean(true) or not
 //
+// Examples:
+// 		isTrue(true) // returns true
+//      isTrue(false) // returns false
+//      isTrue(new Boolean(true)) // returns false
+//
+// ************************************************************************************************
 function isTrue (value) {
 	return (value === true);
 }
@@ -166,6 +205,12 @@ function isTrue (value) {
 //
 // Check if the value is Boolean(false) or not
 //
+// Examples:
+// 		isFalse(true) // returns false
+//      isFalse(false) // returns true
+//      isFalse(new Boolean(false)) // returns false
+//
+// ************************************************************************************************
 function isFalse(value) {
 	return (value === false);
 }
@@ -176,6 +221,13 @@ function isFalse(value) {
 //
 // Check if the string is a lowercase string
 //
+// Examples :
+// 		isLowerCase(null) // returns false
+// 		isLowerCase() // returns true
+// 		isLowerCase(true) // returns false
+// 		isLowerCase('gaurav') // returns true
+//
+// ************************************************************************************************
 function isLowerCase (value) {
 	if (isString(value))
 		return value === value.toLowerCase();
@@ -189,6 +241,13 @@ function isLowerCase (value) {
 //
 // Check if the string is a uppercase string
 //
+// Examples :
+// 		isUpperCase(null) // returns false
+// 		isUpperCase() // returns true
+// 		isUpperCase(false) // returns false
+// 		isUpperCase('GAURAV') // returns true
+//
+// ************************************************************************************************
 function isUpperCase (value) {
 	if (isString(value))
 		return value === value.toUpperCase();
@@ -203,6 +262,14 @@ function isUpperCase (value) {
 // Check is the string is title case 
 // i.e. first letter of each word in the string is capital case
 //
+// Examples :
+// 		isTitleCase('') // returns true
+// 		isTitleCase('Gaurav') // returns true
+// 		isTitleCase('Gaurav Luthra') // returns true
+// 		isTitleCase('hello World') // returns false
+// 		isTitleCase('HATs Off To YOU') // returns true
+//
+// ************************************************************************************************
 function isTitleCase(value) {
 	
 	var retVal = false;
@@ -228,6 +295,14 @@ function isTitleCase(value) {
 //
 // Check if the string is a number
 //
+// Examples:
+// 		isNumeric('7') // returns true
+// 		isNumeric('17.87') // returns true
+// 		isNumeric('\t\t') // returns false
+// 		isNumeric(-Infinity) // returns true
+// 		isNumeric(false) // returns false
+//
+// ************************************************************************************************
 function isNumeric (value) {
 	return (!isNaN(parseFloat(value)));
 }
@@ -236,13 +311,31 @@ function isNumeric (value) {
 //
 // isJSON
 //
-// Check if the string is valid JSON
+// Check if the string/object is valid JSON
 //
+// Examples:
+//	var a = {a : 'a', b : 'b', c : 'c', d : 'd'};
+//  var b = {a : 'a', b : 'b', c : { x : 'x', y : 'y', z : { key1 : 'value1', key2 : 'value2'}}};
+//	var c = {a : 'a', b : 'b', c : { x : 'x', y : 'y', z : { key1 : 'value1', key2 : 'value2', }}};  // Extra comma
+//
+//     isJSON(null); // returns false
+//     isJSON('/abc/'); // returns false
+//     isJSON({}); // returns true
+//     isJSON(new Object()); // returns true
+//     isJSON(a); // returns true
+//     isJSON(b); // returns true
+//     isJSON(c); // returns true
+//     isJSON("{\"a\" : \"5\"}"); // returns true
+//     isJSON("\n{\"a\" : \"5\"}\n"); // returns true
+//
+// ************************************************************************************************
 function isJSON(value) {
 	var retVal = false;
 	try {
 		if (isString(value))
 			return ((typeof JSON.parse(value)) === 'object');
+		else if(typeof value === 'object' && value !== null && isNaN(value))
+			return ((typeof JSON.parse(JSON.stringify(value))) === 'object');
 	} catch(e) {}
 
 	return retVal;
@@ -254,6 +347,13 @@ function isJSON(value) {
 //
 // Check if the string is base64 encoded
 //
+// Examples:
+// 		isBase64('Z2F1cmF2') // returns false
+// 		isBase64('e1wiYVwiIDoge1wiYlwiIDoge1wiY1wiIDogdHJ1ZX19LCBcImRcIiA6IHtcImVcIiA6IHtcImZcIiA6IHRydWV9fX0=') // returns true
+// 		isBase64('gaurav') // returns false
+// 		isBase64('Zm9vYg==') // returns true
+//
+// ************************************************************************************************
 function isBase64(value) {
 	if (isString(value))
 		return base64.test(value);
@@ -267,6 +367,15 @@ function isBase64(value) {
 //
 // Check if the string contains only alphabets, both upper and lower case
 //
+// Examples :
+//		isAlpha('') //returns false
+//		isAlpha()  // returns false
+//      isAlpha('asd')  // returns true
+//      isAlpha('123')  // returns false
+//      isAlpha('bkjkjkjk') // returns true
+//      isAlpha('k nk') // returns false
+//
+// ************************************************************************************************
 function isAlpha(str) {
 	if (isString(str))
 		return alpha.test(str);
@@ -280,6 +389,17 @@ function isAlpha(str) {
 //
 // Check if the string contains alphabets and numbers
 //
+// Examples :
+// 		isAlphanumeric('abc') // returns true
+// 		isAlphanumeric('abc123۞') // returns false
+// 		isAlphanumeric(new Object()) // returns false
+// 		isAlphanumeric('134766678') // returns true
+// 		isAlphanumeric() // returns false
+// 		isAlphanumeric(null) // returns false
+// 		isAlphanumeric('12345abc') // returns true
+// 		isAlphanumeric(2345abc) // returns false
+//
+// ************************************************************************************************
 function isAlphanumeric(str) {
 	if (isString(str))
 		return alphanumeric.test(str);
@@ -293,6 +413,15 @@ function isAlphanumeric(str) {
 //
 // Check if the string is a hexadecimal number
 //
+// Examples :
+// 		isHexadecimal('1f') // returns true
+// 		isHexadecimal('0x1f') // returns false
+// 		isHexadecimal('1F') // returns true
+// 		isHexadecimal('0x1F') // returns false
+//      isHexadecimal('asdfg') // returns false
+//		isHexadecimal('efa0123') // returns true
+//
+// ************************************************************************************************
 function isHexadecimal(str) {
 	if (isString(str))
 		return hexadecimal.test(str);
@@ -306,6 +435,18 @@ function isHexadecimal(str) {
 //
 // Check if the string contains only ascii characters
 //
+// Examples :
+// 		isAscii(' ') // returns false
+// 		isAscii(' ') // returns true
+// 		isAscii(null) // returns false
+// 		isAscii(undefined) // returns false
+// 		isAscii('{}') // returns true
+//		isAscii('gaurav+luthra') // returns true
+//		isAscii('gaurav%luthra') // returns true
+// 		isAscii('ᴁ') // returns false
+//		isAscii('ᴁᴪᴙݝۺ') // returns false
+//
+// ************************************************************************************************
 function isAscii(str) {
 	if (isString(str))
 		return ascii.test(str);
@@ -319,6 +460,15 @@ function isAscii(str) {
 //
 // Check if the value is null
 //
+// Examples :
+// 		isNull() // returns true
+// 		isNull(undefined) // returns true
+// 		isNull(null) // returns true
+// 		isNull(0/0) // returns true
+// 		isNull(false) // returns false
+// 		isNull(new Object()) // returns true
+//
+// ************************************************************************************************
 function isNull (value) {
 	return (value === null || typeof value === 'undefined' || (isNaN(value) && !value.length));
 }
@@ -338,6 +488,7 @@ function isNull (value) {
 //     isValidEmail('luthra.zenith@google.com'); // returns true
 //     isValidEmail('luthra.zenithgoogle.com'); // returns false
 //
+// ************************************************************************************************
 function isValidEmail (str) {
 	if (!isString(str))
 		return false;
@@ -387,6 +538,7 @@ function isValidEmail (str) {
 //     isUUID('4925123f-85a1-46bd-bfef-14026fbd4800', 4); // returns true
 //     isUUID('4956123f-89a1-36bd-cfef-14026fbd1270', 3); // returns true
 //
+// ************************************************************************************************
 function isUUID (str, version) {
 	if (!isString(str))
 		return false;
@@ -410,6 +562,7 @@ function isUUID (str, version) {
 //     isURIEncoded(''); // returns true
 //     isURIEncoded('gaurav'); // returns true
 //
+// ************************************************************************************************
 function isURIEncoded (str) {
 	if (!isString(str))
 		return false;
@@ -436,6 +589,7 @@ function isURIEncoded (str) {
 //     isEmpty(''); // returns true
 //     isEmpty('    '); // returns false
 //
+// ************************************************************************************************
 function isEmpty (value) {
 	return (isNull(value) || value.length == 0);
 }
@@ -454,6 +608,7 @@ function isEmpty (value) {
 //     isWhiteSpace(''); // returns true
 //     isWhiteSpace('    '); // returns true
 //
+// ************************************************************************************************
 function isWhiteSpace (value) {
 	return (isString(value) && value.trim().length == 0);
 }
@@ -472,6 +627,7 @@ function isWhiteSpace (value) {
 //     isBlank(''); // returns true
 //     isBlank('    '); // returns true
 //
+// ************************************************************************************************
 function isBlank (value) {
 	return (isEmpty(value) || isWhiteSpace(value));
 }
@@ -493,6 +649,7 @@ function isBlank (value) {
 //     contains(baseStr, 'This'); // returns true
 //     contains('I am your friend', 'you'); // returns true
 //
+// ************************************************************************************************
 function contains (baseStr, searchStr) {
 	if (!isString(baseStr) || !isString(searchStr))
 		return false;
@@ -520,6 +677,7 @@ function contains (baseStr, searchStr) {
 //     containsIgnoreCase(baseStr, 'hello'); // returns false
 //     containsIgnoreCase('I am your friend', 'you'); // returns true
 //
+// ************************************************************************************************
 function containsIgnoreCase (baseStr, searchStr) {
 	if (!isString(baseStr) || !isString(searchStr))
 		return false;
@@ -622,6 +780,7 @@ function containsDeepKey (obj) {
 //     isPalindrome(str2); // returns true
 //     isPalindrome(str3); // returns false
 //
+// ************************************************************************************************
 function isPalindrome(str) {
 	if (!isString(str))
 		return false;
@@ -630,7 +789,7 @@ function isPalindrome(str) {
         startIdx = 0;
 
     while (endInx > startIdx) {
-      if (str.charAt(startIdx++) !== str.charAt(endInx--)) 
+      if (str.charAt(startIdx++) !== str.charAt(endInx--))
       	return false;
     }
     return true;
@@ -655,6 +814,7 @@ function isPalindrome(str) {
 //     objectEquals(['1', '2', '3'], ['3', '2', '1']); // returns false
 //     objectEquals(['1', '2', '3'], ['1', '2', '3']); // returns true
 //
+// ************************************************************************************************
 function objectEquals(x, y) {
 	'use strict';
 
