@@ -692,7 +692,7 @@ function containsIgnoreCase (baseStr, searchStr) {
 //
 // containsKey
 //
-// Safely reach into a object and returns true if specified key is present. 
+// Safely search into a object and returns true if specified key is present. 
 // Returns false if the intended target is not present.
 //
 // Examples:
