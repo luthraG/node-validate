@@ -158,7 +158,7 @@ function isBoolean(value) {
 	if (isNull(value))
 		return false;
 
-	return (['true', 'false', '1', '0'].indexOf(value.toString()) >= 0);
+	return (['true', 'false', '1', '0'].indexOf(value.toLowerCase().toString()) >= 0);
 }
 
 // ************************************************************************************************
@@ -851,6 +851,74 @@ function objectEquals(x, y) {
         p.every(function (i) { return objectEquals(x[i], y[i]); });
 }
 
+
+// ************************************************************************************************
+//
+// hasAnyMethod
+//
+// Check if the object has any method present inside it
+//
+// Argument(s):
+// obj : Object which needs to be checked ffor method presence
+//
+// Examples:
+// 	   var o = { qwe : { asd : { zxc : 123 } } };
+// 	   var m = { qwe : 123, dummy : function() {console.log('Hello')} };
+//     hasAnyMethod(o); // returns false
+//     hasAnyMethod(null); // returns false
+//     hasAnyMethod(m); // returns true
+//     hasAnyMethod(new Array()); // returns false
+//
+// ************************************************************************************************
+function hasAnyMethod(obj) {
+	
+	if (isStrictObject(obj)) {
+		var names = Object.getOwnPropertyNames(obj);
+
+		for (var i = names.length - 1; i >= 0; i--) {
+			if (typeof obj[names[i]] === 'function')
+				return true;
+		};
+	}
+	return false;
+}
+
+// ************************************************************************************************
+//
+// isMethodPresent
+//
+// Check if the object has the specified method present inside it
+//
+// Argument(s):
+// obj : Object which needs to be checked ffor method presence
+// methodName : Name of the method to look for
+//
+// Examples:
+// 	   var o = { qwe : { asd : { zxc : 123 } } };
+// 	   var m = { qwe : 123, dummy : function() {console.log('Hello')} };
+//     isMethodPresent(o); // returns false
+//     isMethodPresent(null); // returns false
+//     isMethodPresent(m); // returns false
+//     isMethodPresent(m, 'dummy'); // returns true
+//
+// ************************************************************************************************
+function isMethodPresent(obj, methodName) {
+
+	if (!hasAnyMethod(obj) || isEmpty(methodName))
+		return false;
+
+	var names = Object.getOwnPropertyNames(obj);
+
+	for (var i = names.length - 1; i >= 0; i--) {
+
+		if ((typeof obj[names[i]] === 'function') &&
+			names[i] == methodName)
+			return true;
+	};
+
+	return false;
+}
+
 exports = module.exports = {
 	isString             : isString,
 	isNumber             : isNumber,
@@ -885,5 +953,7 @@ exports = module.exports = {
 	containsIgnoreCase   : containsIgnoreCase,
 	isPalindrome         : isPalindrome,
 	objectEquals		 : objectEquals,
-	isNull				 : isNull
+	isNull				 : isNull,
+	hasAnyMethod		 : hasAnyMethod,
+	isMethodPresent		 : isMethodPresent
 };
