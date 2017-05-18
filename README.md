@@ -20,7 +20,7 @@ git clone https://github.com/luthraG/node-validate.git
 
 ### Validators
 
-- **hasAnyMethod(obj)** - check if the object has any method present inside it.
+- **hasAtnyMethod(obj)** - check if the object has any method present inside it.
 - **isAlpha(str)** - check if the string contains only alphabets, both upper and lower case.
 - **isAlphanumeric(str)** - check if the string contains alphabets and numbers.
 - **isArray(value)** - check if the value passed is Array.
@@ -56,6 +56,8 @@ git clone https://github.com/luthraG/node-validate.git
 - **isUUID(str)** - check if the specified string is uuid(of specified version).
 - **isValidEmail(str)** - check if the string is a valid email address.
 - **isWhiteSpace(str)** - check if a string contains only whitespaces.
+- **startsWith(str, starts, position)** - check if a string/number starts with another string/number. Client can specify the position as well, where it will check for start.
+- **endsWith(str, ends, position)** - check if a string/number ends with another string/number. Client can specify the position as well, where it will check for end.
 
 ### Examples
 
@@ -254,6 +256,22 @@ ratify.isMethodPresent(o); // returns false
 ratify.isMethodPresent(null); // returns false
 ratify.isMethodPresent(m); // returns false
 ratify.isMethodPresent(m, 'dummy'); // returns true
+
+// Check if a string/number starts with another string/number at specified position. Returns boolean true or false
+ratify.startsWith('Blue Whale, Killer Whale', 'Blue');          // returns true
+ratify.startsWith('Blue Whale, Killer Whale', 'Blue', 10);      // returns false
+ratify.startsWith('Brave new world', 'world');                  // returns false
+ratify.startsWith('Brave new world', 'world', 10);              // returns true
+ratify.startsWith('123456', '234', 1);                          // returns true
+
+// Check if a string/number ends with another string/number at specified position. Returns boolean true or false
+ratify.endsWith('Blue Whale, Killer Whale', 'Whale');                   // returns true
+ratify.endsWith('Blue Whale, Killer Whale', 'Killer Whale', 10);        // returns false
+ratify.endsWith('Blue Whale, Killer Whale', 'Killer Whale', 12);        // returns true
+ratify.endsWith('Brave new world', 'world');                            // returns true
+ratify.endsWith('Brave new world', 'world', 11);                        // returns false
+ratify.endsWith('123456', '23456', 1);                                  // returns true
+ratify.endsWith('123456', '2345', 1);                                   // returns false
 
 ```
 
