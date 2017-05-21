@@ -1,23 +1,35 @@
 {
-	"name"            : "node-ratify",
-	"version"         : "1.0.6",
-	"description"     : "A rich and efficient node validation library for String, Number, Date and Javascript Objects",
-	"main" 			  : "./validate.js",
-	"keywords"		  : [
-	    "validator", "validation", "validate", "assert",
-	 	"node-validate", "node-validation", "ratify",
-	 	"node-valid", "valid", "node-ratify", "validationUtils"
-	],
-	"repository"      : {
-		"type" : "git",
-		"url"  : "https://github.com/luthraG/node-validate.git"
-	},
-	"bugs"            : {
-		"url" : "https://github.com/luthraG/node-validate/issues"
-	},
-	"author"          : {
-		"name"  : "Gaurav Luthra",
-		"email" : "luthra.zenith@gmail.com"
-	},
-	"license" : "MIT"
+    "name"            : "node-ratify",
+    "version"         : "1.0.7",
+    "description"     : "A rich and efficient node validation library for String, Number, Date and Javascript Objects",
+    "main"            : "./validate.js",
+    "keywords"        : [
+        "validator",
+        "validation",
+        "validate",
+        "assert",
+        "node-validate",
+        "node-validation",
+        "ratify",
+        "node-valid",
+        "valid",
+        "node-ratify",
+        "validationUtils",
+        "string validation",
+        "date validation",
+        "array validation",
+        "object validation"
+    ],
+    "repository"      : {
+        "type" : "git",
+        "url"  : "https://github.com/luthraG/node-validate.git"
+    },
+    "bugs"            : {
+        "url" : "https://github.com/luthraG/node-validate/issues"
+    },
+    "author"          : {
+        "name"  : "Gaurav Luthra",
+        "email" : "luthra.zenith@gmail.com"
+    },
+    "license" : "MIT"
 }

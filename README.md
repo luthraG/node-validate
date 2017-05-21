@@ -1,10 +1,10 @@
 # node-ratify
 
-A library of string validators.
+A library of string, array and javascript object validators.
 
 ## Installation
 
-	'npm install node-ratify'
+    'npm install node-ratify'
 
 ### Server-side usage
 
@@ -20,7 +20,7 @@ git clone https://github.com/luthraG/node-validate.git
 
 ### Validators
 
-- **hasAtnyMethod(obj)** - check if the object has any method present inside it.
+- **hasAnyMethod(obj)** - check if the object has any method present inside it.
 - **isAlpha(str)** - check if the string contains only alphabets, both upper and lower case.
 - **isAlphanumeric(str)** - check if the string contains alphabets and numbers.
 - **isArray(value)** - check if the value passed is Array.
@@ -56,8 +56,12 @@ git clone https://github.com/luthraG/node-validate.git
 - **isUUID(str)** - check if the specified string is uuid(of specified version).
 - **isValidEmail(str)** - check if the string is a valid email address.
 - **isWhiteSpace(str)** - check if a string contains only whitespaces.
-- **startsWith(str, starts, position)** - check if a string/number starts with another string/number. Client can specify the position as well, where it will check for start.
-- **endsWith(str, ends, position)** - check if a string/number ends with another string/number. Client can specify the position as well, where it will check for end.
+- **startsWith(str, starts, position, strict)** - check if a string/number/array starts with another string/number/array.<br />
+It accepts two optional parameters - position and strict. Client can specify the optional position value to tell where it will check for start.<br />
+The optional parameters strict, which is set to false by default, indicates whether number values should be converted to string or not while comparing
+- **endsWith(str, ends, position, strict)** - check if a string/number/array ends with another string/number/array.<br />
+It accepts two optional parameters - position and strict. Client can specify the optional position value to tell where it will check for end.<br />
+The optional parameters strict, which is set to false by default, indicates whether number values should be converted to string or not while comparing
 
 ### Examples
 
@@ -128,9 +132,9 @@ ratify.isNumeric(-Infinity) // returns true
 // Check if the string/object is valid JSON
 var a = {a : 'a', b : 'b', c : 'c', d : 'd'};
 var b = {a : 'a', b : 'b', c : { x : 'x', y : 'y', z : 
-			{ key1 : 'value1', key2 : 'value2'}}};
+            { key1 : 'value1', key2 : 'value2'}}};
 var c = {a : 'a', b : 'b', c : { x : 'x', y : 'y', z : 
-			{ key1 : 'value1', key2 : 'value2', }}};  // Extra comma
+            { key1 : 'value1', key2 : 'value2', }}};  // Extra comma
 
 ratify.isJSON("\n{\"a\" : \"5\"}\n"); // returns true
 ratify.isJSON(a); // returns true
@@ -257,14 +261,26 @@ ratify.isMethodPresent(null); // returns false
 ratify.isMethodPresent(m); // returns false
 ratify.isMethodPresent(m, 'dummy'); // returns true
 
-// Check if a string/number starts with another string/number at specified position. Returns boolean true or false
+//
+// Check if a string/number/array starts with another string/number/array at specified position.
+// Returns boolean true or false
+// Setting strict to true will not convert number to string while comparing
+//
 ratify.startsWith('Blue Whale, Killer Whale', 'Blue');          // returns true
 ratify.startsWith('Blue Whale, Killer Whale', 'Blue', 10);      // returns false
 ratify.startsWith('Brave new world', 'world');                  // returns false
 ratify.startsWith('Brave new world', 'world', 10);              // returns true
 ratify.startsWith('123456', '234', 1);                          // returns true
+ratify.startsWith([1, 2, 3, 4], [1, 2, 3]);                     // returns true
+ratify.startsWith([1, 2, 3, 4], 1);                             // returns true
+ratify.startsWith([1, 2, 3, 4], '1', true);                     // returns false as strict mode is set to true
 
-// Check if a string/number ends with another string/number at specified position. Returns boolean true or false
+
+//
+// Check if a string/number/array ends with another string/number/array at specified position.
+// Returns boolean true or false
+// Setting strict to true will not convert number to string while comparing
+//
 ratify.endsWith('Blue Whale, Killer Whale', 'Whale');                   // returns true
 ratify.endsWith('Blue Whale, Killer Whale', 'Killer Whale', 10);        // returns false
 ratify.endsWith('Blue Whale, Killer Whale', 'Killer Whale', 12);        // returns true
@@ -272,6 +288,9 @@ ratify.endsWith('Brave new world', 'world');                            // retur
 ratify.endsWith('Brave new world', 'world', 11);                        // returns false
 ratify.endsWith('123456', '23456', 1);                                  // returns true
 ratify.endsWith('123456', '2345', 1);                                   // returns false
+ratify.endsWith([1, 2, 3, 4], [2, 3, 4]);                               // returns true
+ratify.endsWith([1, 2, 3, 4], 4);                                       // returns true
+ratify.endsWith([1, 2, 3, 4], '4', true);                               // returns false as strict mode it set to true
 
 ```
 

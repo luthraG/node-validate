@@ -923,7 +923,7 @@ function isMethodPresent(obj, methodName) {
 //
 // startsWith
 //
-// Check if a string/number starts with another string/number at specified position. Returns boolean true or false
+// Check if a string/number/array starts with another string/number/array at specified position. Returns boolean true or false
 //
 //
 // Examples:
@@ -932,25 +932,56 @@ function isMethodPresent(obj, methodName) {
 //     startsWith('Brave new world', 'world');                  // returns false
 //     startsWith('Brave new world', 'world', 10);              // returns true
 //     startsWith('123456', '234', 1);                          // returns true
+//     startsWith([1, 2, 3, 4], [2, 3, 4], 1);                  // returns true
+//     startsWith([1, 2, 3, 4], [1, 2, 3, 4]);                  // returns true
+//     startsWith([1, 2, 3, 4], '1', true);                     // returns false
+//     startsWith([1, 2, 3, 4], '1', false);                    // returns true
 //
 // ************************************************************************************************
-function startsWith (str, starts, position) {
-    if (str == null) str = '';
-    str = '' + str;
+function startsWith (base, starts, position, strict) {
+    if (base == null)    base = '';
+    if (starts == null)  starts = '';
+    if (isStrictBoolean(position)) {
+        strict   = position;
+        position = null;
+    }
 
-    starts = '' + starts;
+    // Check if base is array
+    if (isArray(base)) {
+        // If starts is not an array then convert it to an array
+        starts = isArray(starts) ? starts : (strict ? [ starts ] : [ '' + starts ]);
+    } else if (isArray(starts)) {
+        // If base is not array then convert it to an array
+        base = isArray(base) ? base : (strict ? [ base ] : [ '' + base ]);
+    } else {
+        base   = '' + base;
+        starts = '' + starts;
+    }
 
-    // position should be not null, should be a positive number which is lesser than length of string
-    position = (position !== null && isNumber(position) && (position > 0) && (position <= str.length) ) ? position : 0;
+    // position should be not null, should be a positive number which is lesser than length of string/number/array
+    position = (position !== null && isNumber(position) && (position > 0) && (position <= base.length) ) ? position : 0;
 
-    return (str.lastIndexOf(starts, position) === position);
+    if (isArray(base)) {
+        base = (base.length >= starts.length) ? (base.slice(position, (starts.length + position)) || []) : [];
+
+        if (base.length !== starts.length)
+            return false;
+        for (var i = base.length; i--;) {
+            if ((strict && (base[i] !== starts[i])) || (!strict && (base[i] + '' !== starts[i] + '')))
+                return false;
+        }
+
+        return true;
+    } else {
+        return (base.lastIndexOf(starts, position) === position);
+    }
 }
 
 // ************************************************************************************************
 //
 // endsWith
 //
-// Check if a string/number ends with another string/number at specified position. Returns boolean true or false
+// Check if a string/number/array ends with specified string/number/array at specified position. Returns boolean true or false
 //
 //
 // Examples:
@@ -961,20 +992,50 @@ function startsWith (str, starts, position) {
 //     endsWith('Brave new world', 'world', 11);                        // returns false
 //     endsWith('123456', '23456', 1);                                  // returns true
 //     endsWith('123456', '2345', 1);                                   // returns false
+//     endsWith(123456, 23456);                                         // returns true
+//     endsWith([1, 2, 3, 4], [2, 3, 4]);                               // returns true
+//
 //
 // ************************************************************************************************
-function endsWith (str, ends, position) {
-    if (str == null) str = '';
-    str = '' + str;
+function endsWith (base, ends, position, strict) {
+    if (base == null) base = '';
+    if (ends == null) ends = '';
+    if (isStrictBoolean(position)) {
+        strict   = position;
+        position = null;
+    }
 
-    ends = '' + ends;
+    // Check if base is array
+    if (isArray(base)) {
+        // If ends is not an array then convert it to an array
+        ends = isArray(ends) ? ends : (strict ? [ ends ] : [ '' + ends ]);
+    } else if (isArray(ends)) {
+        // If base is not array then convert it to an array
+        base = isArray(base) ? base : (strict ? [ base ] : [ '' + base ]);
+    } else {
+        base = '' + base;
+        ends = '' + ends;
+    }
 
-    if (isNull(position) || (position >= str.length) || (position < 0))
-        position = str.length - ends.length;
+    if (isNull(position) || (position >= base.length) || (position < 0))
+        position = (base.length > ends.length) ? (base.length - ends.length) : 0;
     else
         position = position;
 
-    return (str.indexOf(ends, position) === position);
+    if (isArray(base)) {
+        base = base.slice(position) || [];
+
+        if (base.length !== ends.length)
+            return false;
+        for (var i = base.length; i--;) {
+            if ((strict && (base[i] !== ends[i])) || (!strict && (base[i] + '' !== ends[i] + '')))
+                return false;
+        }
+
+        return true;
+    } else {
+        return (base.indexOf(ends, position) === position);
+    }
 }
 
 exports = module.exports = {

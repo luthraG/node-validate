@@ -14,6 +14,14 @@ var startsWith  = require('../validate.js').startsWith;
     ok(startsWith('HelloFoo', 'Foo', 5), 'HelloFoo starts with foo at position 6');
     ok(startsWith('Brave new world', 'world', 10), 'Brave new world starts with world at position 10');
     ok(startsWith('Äspress', 'Ä'), 'Äspress starts with a unicode character Ä');
+    ok(startsWith([1, 2, 3, 4], [1, 2, 3]), '[1, 2, 3, 4] starts with [1, 2, 3]');
+    ok(startsWith([1, 2, 3, 4], [1, 2, 3, 4]), '[1, 2, 3, 4] starts with [1, 2, 3, 4]');
+    ok(startsWith([1, 2, 3, 4], [2, 3], 1), '[1, 2, 3, 4] starts with [2, 3] at position 1');
+    ok(!startsWith([1, 2, 3, 4], [2, 3, 4, 5]), '[1, 2, 3, 4] does not start with [2, 3, 4, 5]');
+    ok(!startsWith([1, 2, 3, 4], [1, 2, 3, 4, 5]), '[1, 2, 3, 4] does not start with [1, 2, 3, 4, 5]');
+    ok(startsWith([1, 2, 3, 4], [2, 3, 4], 1), '[1, 2, 3, 4] starts with [2, 3, 4] at position 1');
+    ok(startsWith([1, 2, 3, 4], 1, true), '[1, 2, 3, 4] starts with number 1 with strict mode true');
+    ok(startsWith([1, 2, 3, 4], '1', false), '[1, 2, 3, 4] starts with string 1 with strict mode set to true');
 
     strictEqual(startsWith('gaurav', 'gau'), true);
     strictEqual(startsWith('GAURAV', 'GA'), true);
