@@ -4,7 +4,8 @@ var        alpha = /^[A-Z]+$/i,
            ascii = /^[\x00-\x7F]+$/,
           base64 = /^([A-Za-z0-9+\/]{4})*([A-Za-z0-9+\/]{4}|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{2}==)$/i,
            email = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-     hexadecimal = /^[0-9A-F]+$/i;
+     hexadecimal = /^[0-9A-F]+$/i,
+     md5         = /^[A-Fa-f0-9]{32}$/;
 
 // https://en.wikipedia.org/wiki/Universally_unique_identifier#Definition
 var uuid = {
@@ -1038,6 +1039,30 @@ function endsWith (base, ends, position, strict) {
     }
 }
 
+// ************************************************************************************************
+//
+// isMD5
+//
+// Check if value is MD5 hash
+//
+// Argument(s):
+// str : It takes a strings which needs to be checked for md5 hash value
+//
+// Examples:
+//     isMD5('');                                   // returns false
+//     isMD5(null);                                 // returns false
+//     isMD5('e4d909c290d0fb1ca068ffaddf22cbd0');   // returns true
+//     isMD5('9e107d9d372bb6826bd81d3542a419d6');   // returns true
+//     isMD5('hello world');                        // returns false
+//
+// ************************************************************************************************
+function isMD5(hash) {
+    if (!isString(hash))
+        return false;
+    else
+        return md5.test(hash);
+}
+
 exports = module.exports = {
     isString             : isString,
     isNumber             : isNumber,
@@ -1076,5 +1101,6 @@ exports = module.exports = {
     hasAnyMethod         : hasAnyMethod,
     isMethodPresent      : isMethodPresent,
     startsWith           : startsWith,
-    endsWith             : endsWith
+    endsWith             : endsWith,
+    isMD5                : isMD5
 };

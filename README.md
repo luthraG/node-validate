@@ -292,6 +292,15 @@ ratify.endsWith([1, 2, 3, 4], [2, 3, 4]);                               // retur
 ratify.endsWith([1, 2, 3, 4], 4);                                       // returns true
 ratify.endsWith([1, 2, 3, 4], '4', true);                               // returns false as strict mode it set to true
 
+//
+// Check if the specified string is md5 hash or not
+//
+ratify.isMD5('');                                   // returns false
+ratify.isMD5(null);                                 // returns false
+ratify.isMD5('e4d909c290d0fb1ca068ffaddf22cbd0');   // returns true
+ratify.isMD5('9e107d9d372bb6826bd81d3542a419d6');   // returns true
+ratify.isMD5('hello world');                        // returns false
+
 ```
 
 ### License(MIT)
