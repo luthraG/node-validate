@@ -1,5 +1,7 @@
 # node-ratify
 
+[![NPM version][npm-image]][npm-url]
+
 A library of string, array and javascript object validators.
 
 ## Installation
@@ -31,7 +33,7 @@ git clone https://github.com/luthraG/node-validate.git
 - **isAscii(value)** - check if the string contains only ascii characters.
 - **isBase64(str)** - check if a string is base64 encoded.
 - **isBlank(str)** - check if a string is blank.
-- **isBoolean(str)** - Check if the value is boolean value i.e. true, false, 1, or 0.
+- **isBoolean(str)** - check if the value is boolean value i.e. true, false, 1, or 0.
 - **isEmpty(str)** - check if a string is empty. A string containing only whitespaces is blank string but not empty string.
 - **isFalse(value)** - check if the value passed is false.
 - **isFunction(value)** - check if the value is function or not.
@@ -316,7 +318,8 @@ ratify.isMACAddress('78:0K:B8:M8:DF:74');   // returns false
 
 ### License(MIT)
 
-Copyright (c) 2015, 2017 Gaurav Luthra(luthra.zenith@gmail.com)
+```
+Copyright (c) 2017 Gaurav Luthra(luthra.zenith@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -335,3 +338,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
+
+[npm-url]: https://www.npmjs.com/package/node-ratify
+[npm-image]: https://img.shields.io/npm/v/node-ratify.svg
