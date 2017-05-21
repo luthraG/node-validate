@@ -1,0 +1,41 @@
+{
+    "name"          : "node-ratify",
+    "description"   : "A rich and efficient validation library for String, Number, Date and Javascript objects",
+    "homepage"      : "https://github.com/luthraG/node-validate",
+    "main"          : [
+        "validate.js"
+    ],
+    "keywords"      : [
+        "validator",
+        "validation",
+        "validate",
+        "assert",
+        "node-validate",
+        "node-validation",
+        "ratify",
+        "node-valid",
+        "valid",
+        "node-ratify",
+        "validationUtils",
+        "string validation",
+        "date validation",
+        "array validation",
+        "object validation"
+    ],
+    "ignore"        : [
+        "**/.*",
+        "package.json",
+        "node_modules",
+        "bower_components",
+        "test"
+    ],
+    "repository"    : {
+        "type" : "git",
+        "url"  : "https://github.com/luthraG/node-validate.git"
+    },
+    "authors"       : {
+        "name"      : "Gaurav Luthra",
+        "email"     : "luthra.zenith@gmail.com"
+    },
+    "license"       : "MIT"
+}
