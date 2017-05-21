@@ -38,6 +38,7 @@ git clone https://github.com/luthraG/node-validate.git
 - **isHexadecimal(str)** - Check if the string is a hexadecimal number.
 - **isJSON(str)** - check if a string is a valid JSON string.
 - **isLowerCase(str)** - check if a string is in lowercase.
+- **isMACAddress(str)** - check if the string value is a valid MAC address.
 - **isMD5(str)** - check if the string value is MD5 hash.
 - **isMethodPresent(obj, methodName)** - check if the object has the specified method present inside it.
 - **isNull(value)** - check if the value is null or undefined or Nan.
@@ -302,11 +303,20 @@ ratify.isMD5('e4d909c290d0fb1ca068ffaddf22cbd0');   // returns true
 ratify.isMD5('9e107d9d372bb6826bd81d3542a419d6');   // returns true
 ratify.isMD5('hello world');                        // returns false
 
+//
+// Check if the specified string is valid MAC address or not
+//
+ratify.isMACAddress('');                    // returns false
+ratify.isMACAddress(null);                  // returns false
+ratify.isMACAddress('78:0C:B8:D8:ED:74');   // returns true
+ratify.isMACAddress('78-0C-B8-D8-ED-74');   // returns true
+ratify.isMACAddress('78:0K:B8:M8:DF:74');   // returns false
+
 ```
 
 ### License(MIT)
 
-Copyright (c) 2015 Gaurav Luthra(luthra.zenith@gmail.com)
+Copyright (c) 2015, 2017 Gaurav Luthra(luthra.zenith@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

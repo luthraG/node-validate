@@ -1,7 +1,7 @@
 var ok          = require('assert').ok;
 var isMD5       = require('../validate.js').isMD5;
 
-(function testEndsWith() {
+(function testMD5() {
     ok(!isMD5(''), 'Empty string is not a md5 hash value');
     ok(!isMD5(null), 'null is not a md5 hash value');
     ok(!isMD5('Hello World'), 'String \"Hello World\" is not a md5 hash value');

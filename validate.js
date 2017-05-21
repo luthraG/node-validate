@@ -5,7 +5,9 @@ var        alpha = /^[A-Z]+$/i,
           base64 = /^([A-Za-z0-9+\/]{4})*([A-Za-z0-9+\/]{4}|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{2}==)$/i,
            email = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
      hexadecimal = /^[0-9A-F]+$/i,
-     md5         = /^[A-Fa-f0-9]{32}$/;
+            md5  = /^[A-Fa-f0-9]{32}$/,
+    macAddress1  = /^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$/,
+    macAddress2  = /^([0-9a-fA-F][0-9a-fA-F]-){5}([0-9a-fA-F][0-9a-fA-F])$/;
 
 // https://en.wikipedia.org/wiki/Universally_unique_identifier#Definition
 var uuid = {
@@ -1063,6 +1065,30 @@ function isMD5(hash) {
         return md5.test(hash);
 }
 
+// ************************************************************************************************
+//
+// isMACAddress
+//
+// Check if value is a valid MAC Address 
+//
+// Argument(s):
+// str : It takes a strings which needs to be checked for MAC address
+//
+// Examples:
+//     isMACAddress('');                                   // returns false
+//     isMACAddress(null);                                 // returns false
+//     isMACAddress('e4d909c290d0fb1ca068ffaddf22cbd0');   // returns true
+//     isMACAddress('9e107d9d372bb6826bd81d3542a419d6');   // returns true
+//     isMACAddress('hello world');                        // returns false
+//
+// ************************************************************************************************
+function isMACAddress(str) {
+    if (!isString(str))
+        return false;
+    else
+        return macAddress1.test(str) || macAddress2.test(str);
+}
+
 exports = module.exports = {
     isString             : isString,
     isNumber             : isNumber,
@@ -1102,5 +1128,6 @@ exports = module.exports = {
     isMethodPresent      : isMethodPresent,
     startsWith           : startsWith,
     endsWith             : endsWith,
-    isMD5                : isMD5
+    isMD5                : isMD5,
+    isMACAddress         : isMACAddress
 };
