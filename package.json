@@ -1,6 +1,6 @@
 {
     "name"          : "node-ratify",
-    "version"       : "1.0.11",
+    "version"       : "1.0.12",
     "description"   : "A rich and efficient node validation library for String, Number, Date and Javascript Objects",
     "main"          : "./validate.js",
     "keywords"      : [
@@ -22,10 +22,14 @@
     ],
     "files"         : [
         "validate.js",
+        "validate.min.js",
         "README.md",
         "package.json",
         "LICENSE"
     ],
+    "devDependencies" : {
+        "uglify-js"   : "^3.0.10"
+    },
     "repository"    : {
         "type" : "git",
         "url"  : "https://github.com/luthraG/node-validate.git"
@@ -36,6 +40,9 @@
     "author"        : {
         "name"  : "Gaurav Luthra",
         "email" : "luthra.zenith@gmail.com"
+    },
+    "scripts"       : {
+        "minify"    : "uglifyjs validate.js -o validate.min.js  --compress --mangle --comments '/Copyright/'"
     },
     "license"       : "MIT"
 }
