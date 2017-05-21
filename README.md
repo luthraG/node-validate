@@ -20,6 +20,10 @@ git clone https://github.com/luthraG/node-validate.git
 
 ### Validators
 
+- **contains(str)** - check if the string contains another string(Case sensitive search).
+- **containsDeepKey(obj)** - Safely reach into a 'nested' object and returns true if specified key is present.
+- **containsIgnoreCase(str)** - check if the string contains another string(Case insensitive search).
+- **containsKey(obj, key)** - Safely reach into a object and returns true if specified key is present. 
 - **hasAnyMethod(obj)** - check if the object has any method present inside it.
 - **isAlpha(str)** - check if the string contains only alphabets, both upper and lower case.
 - **isAlphanumeric(str)** - check if the string contains alphabets and numbers.
@@ -28,22 +32,18 @@ git clone https://github.com/luthraG/node-validate.git
 - **isBase64(str)** - check if a string is base64 encoded.
 - **isBlank(str)** - check if a string is blank.
 - **isBoolean(str)** - Check if the value is boolean value i.e. true, false, 1, or 0.
-- **contains(str)** - check if the string contains another string(Case sensitive search).
-- **containsIgnoreCase(str)** - check if the string contains another string(Case insensitive search).
-- **containsKey(obj, key)** - Safely reach into a object and returns true if specified key is present.
-- **containsDeepKey(obj)** - Safely reach into a 'nested' object and returns true if specified key is present. 
 - **isEmpty(str)** - check if a string is empty. A string containing only whitespaces is blank string but not empty string.
-- **isHexadecimal(str)** - Check if the string is a hexadecimal number.
 - **isFalse(value)** - check if the value passed is false.
 - **isFunction(value)** - check if the value is function or not.
+- **isHexadecimal(str)** - Check if the string is a hexadecimal number.
 - **isJSON(str)** - check if a string is a valid JSON string.
 - **isLowerCase(str)** - check if a string is in lowercase.
+- **isMD5(str)** - check if the string value is MD5 hash.
 - **isMethodPresent(obj, methodName)** - check if the object has the specified method present inside it.
 - **isNull(value)** - check if the value is null or undefined or Nan.
 - **isNumber(value)** - check if the value passed is Number object.
 - **isNumeric(str)** - check if a string is number(Integer/Floating point et al.).
 - **isObject(value)** - check if the value passed is Object.
-- **objectEquals(obj1, obj2)** - check if two objects(String, Object, Number, Date, function, RegExp, Array) are equal or not.
 - **isPalindrome(str)** - check if input string is a palindrome or not.
 - **isRegExp(value)** - check if the value is RegExp or not.
 - **isStrictBoolean(value)** - check if the value is boolean object or not.
@@ -56,6 +56,7 @@ git clone https://github.com/luthraG/node-validate.git
 - **isUUID(str)** - check if the specified string is uuid(of specified version).
 - **isValidEmail(str)** - check if the string is a valid email address.
 - **isWhiteSpace(str)** - check if a string contains only whitespaces.
+- **objectEquals(obj1, obj2)** - check if two objects(String, Object, Number, Date, function, RegExp, Array) are equal or not.
 - **startsWith(str, starts, position, strict)** - check if a string/number/array starts with another string/number/array.<br />
 It accepts two optional parameters - position and strict. Client can specify the optional position value to tell where it will check for start.<br />
 The optional parameters strict, which is set to false by default, indicates whether number values should be converted to string or not while comparing
@@ -273,7 +274,7 @@ ratify.startsWith('Brave new world', 'world', 10);              // returns true
 ratify.startsWith('123456', '234', 1);                          // returns true
 ratify.startsWith([1, 2, 3, 4], [1, 2, 3]);                     // returns true
 ratify.startsWith([1, 2, 3, 4], 1);                             // returns true
-ratify.startsWith([1, 2, 3, 4], '1', true);                     // returns false as strict mode is set to true
+ratify.startsWith([1, 2, 3, 4], '1', true);                     // returns false as strict mode = true
 
 
 //
@@ -281,16 +282,16 @@ ratify.startsWith([1, 2, 3, 4], '1', true);                     // returns false
 // Returns boolean true or false
 // Setting strict to true will not convert number to string while comparing
 //
-ratify.endsWith('Blue Whale, Killer Whale', 'Whale');                   // returns true
-ratify.endsWith('Blue Whale, Killer Whale', 'Killer Whale', 10);        // returns false
-ratify.endsWith('Blue Whale, Killer Whale', 'Killer Whale', 12);        // returns true
-ratify.endsWith('Brave new world', 'world');                            // returns true
-ratify.endsWith('Brave new world', 'world', 11);                        // returns false
-ratify.endsWith('123456', '23456', 1);                                  // returns true
-ratify.endsWith('123456', '2345', 1);                                   // returns false
-ratify.endsWith([1, 2, 3, 4], [2, 3, 4]);                               // returns true
-ratify.endsWith([1, 2, 3, 4], 4);                                       // returns true
-ratify.endsWith([1, 2, 3, 4], '4', true);                               // returns false as strict mode it set to true
+ratify.endsWith('Blue Whale, Killer Whale', 'Whale');             // returns true
+ratify.endsWith('Blue Whale, Killer Whale', 'Killer Whale', 10);  // returns false
+ratify.endsWith('Blue Whale, Killer Whale', 'Killer Whale', 12);  // returns true
+ratify.endsWith('Brave new world', 'world');                      // returns true
+ratify.endsWith('Brave new world', 'world', 11);                  // returns false
+ratify.endsWith('123456', '23456', 1);                            // returns true
+ratify.endsWith('123456', '2345', 1);                             // returns false
+ratify.endsWith([1, 2, 3, 4], [2, 3, 4]);                         // returns true
+ratify.endsWith([1, 2, 3, 4], 4);                                 // returns true
+ratify.endsWith([1, 2, 3, 4], '4', true);                         // returns false as strict mode = true
 
 //
 // Check if the specified string is md5 hash or not
