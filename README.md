@@ -4,16 +4,33 @@
 
 A library of string, array and javascript object validators.
 
-## Installation
-
-    'npm install node-ratify'
-
 ### Server-side usage
 
 ```javascript
 var ratify = require('node-ratify');
 
-ratify.isBase64('bm9kZS1yYXRpZnk='); // true
+ratify.isBase64('bm9kZS1yYXRpZnk='); //=> true
+```
+
+The library can also be installed through [npm][npm]
+
+```bash
+$ npm install node-ratify
+```
+
+### Client-side usage
+
+```html
+<script type="text/javascript" src="validate.min.js"></script>
+<script type="text/javascript">
+  validate.isBase64('bm9kZS1yYXRpZnk='); //=> true
+</script>
+```
+
+The library can also be installed through [bower][bower]
+
+```bash
+$ bower install node-ratify
 ```
 
 ### Clone the repo
@@ -342,3 +359,6 @@ SOFTWARE.
 
 [npm-url]: https://www.npmjs.com/package/node-ratify
 [npm-image]: https://img.shields.io/npm/v/node-ratify.svg
+
+[npm]: https://www.npmjs.com/
+[bower]: http://bower.io/
