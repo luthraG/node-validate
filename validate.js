@@ -1159,6 +1159,26 @@ function isWeakSet(obj) {
    return (Object.prototype.toString.call(obj) === '[object WeakSet]');
 }
 
+// ************************************************************************************************
+//
+// isUndefined
+//
+// Check if value is a undefined or not
+//
+// Argument(s):
+// value : Argument that needs to be checked if it is undefined or not
+//
+// Examples:
+//     isUndefined(undefined);          // returns true
+//     isUndefined(null);               // returns false
+//     isUndefined(void 0);             // returns true
+//     isUndefined(new Object);         // returns false
+//
+// ************************************************************************************************
+function isUndefined (value) {
+    return (value === undefined);
+}
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1195,6 +1215,7 @@ exports = module.exports = {
     isString             : isString,
     isTitleCase          : isTitleCase,
     isTrue               : isTrue,
+    isUndefined          : isUndefined,
     isUpperCase          : isUpperCase,
     isURIEncoded         : isURIEncoded,
     isUUID               : isUUID,

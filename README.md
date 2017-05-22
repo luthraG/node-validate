@@ -365,6 +365,14 @@ ratify.isWeakSet(new WeakSet());    // returns true
 ratify.isWeakSet(new Set);          // returns false
 ratify.isWeakSet(new WeakSet[{}]);  // returns true
 
+//
+// Check if passed value is undefined or not
+//
+ratify.isUndefined(undefined);      // returns true
+ratify.isUndefined(null);           // returns false
+ratify.isUndefined(void 0);         // returns true
+ratify.isUndefined(new Object);     // returns false
+
 ```
 
 ### License(MIT)
