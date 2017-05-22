@@ -1142,7 +1142,7 @@ function isSet(obj) {
 //
 // isWeakSet
 //
-// Check if value is a set or not
+// Check if value is a weak set or not
 //
 // Argument(s):
 // obj : It takes an object as argument that needs to be checked if it is set or not 
