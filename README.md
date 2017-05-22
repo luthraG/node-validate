@@ -334,6 +334,18 @@ ratify.isMACAddress('78:0C:B8:D8:ED:74');   // returns true
 ratify.isMACAddress('78-0C-B8-D8-ED-74');   // returns true
 ratify.isMACAddress('78:0K:B8:M8:DF:74');   // returns false
 
+//
+// Check if the specified string is valid hexadecimal color value or not
+//
+ratify.isHexaColor('');                 // returns false
+ratify.isHexaColor(null);               // returns false
+ratify.isHexaColor('#ffe4e1');          // returns true
+ratify.isHexaColor('#ff4545');          // returns true
+ratify.isHexaColor('#800080');          // returns true
+ratify.isHexaColor('800080');           // returns true
+ratify.isHexaColor('#8K0K8K');          // returns false
+ratify.isHexaColor('#helloworld');      // returns false
+
 ```
 
 ### License(MIT)

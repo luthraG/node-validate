@@ -7,7 +7,8 @@ var        alpha = /^[A-Z]+$/i,
      hexadecimal = /^[0-9A-F]+$/i,
             md5  = /^[A-Fa-f0-9]{32}$/,
     macAddress1  = /^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$/,
-    macAddress2  = /^([0-9a-fA-F][0-9a-fA-F]-){5}([0-9a-fA-F][0-9a-fA-F])$/;
+    macAddress2  = /^([0-9a-fA-F][0-9a-fA-F]-){5}([0-9a-fA-F][0-9a-fA-F])$/,
+      hexaColor  = /^#?([0-9A-F]{3}|[0-9A-F]{6})$/i;
 
 // https://en.wikipedia.org/wiki/Universally_unique_identifier#Definition
 var uuid = {
@@ -1089,6 +1090,33 @@ function isMACAddress(str) {
         return macAddress1.test(str) || macAddress2.test(str);
 }
 
+// ************************************************************************************************
+//
+// isHexaColor
+//
+// Check if value is a valid hexadecimal color value
+//
+// Argument(s):
+// str : It takes a strings which needs to be checked for hexa decimal color value
+//
+// Examples:
+//     isHexaColor('');                 // returns false
+//     isHexaColor(null);               // returns false
+//     isHexaColor('#ffe4e1');          // returns true
+//     isHexaColor('#ff4545');          // returns true
+//     isHexaColor('#800080');          // returns true
+//     isHexaColor('800080');           // returns true
+//     isHexaColor('#8K0K8K');          // returns false
+//     isHexaColor('#helloworld');      // returns false
+//
+// ************************************************************************************************
+function isHexaColor(str) {
+    if (!isString(str))
+        return false;
+    else
+        return hexaColor.test(str);
+}
+
 exports = module.exports = {
     isString             : isString,
     isNumber             : isNumber,
@@ -1129,5 +1157,6 @@ exports = module.exports = {
     startsWith           : startsWith,
     endsWith             : endsWith,
     isMD5                : isMD5,
-    isMACAddress         : isMACAddress
+    isMACAddress         : isMACAddress,
+    isHexaColor          : isHexaColor
 };
