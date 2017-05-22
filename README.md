@@ -373,6 +373,14 @@ ratify.isUndefined(null);           // returns false
 ratify.isUndefined(void 0);         // returns true
 ratify.isUndefined(new Object);     // returns false
 
+//
+// Check if passed object is error object or not
+//
+ratify.isError(new Error());                // returns true
+ratify.isError(new RangeError());           // returns true
+ratify.isError(new ReferenceError());       // returns true
+ratify.isError(new TypeError());            // returns true
+
 ```
 
 ### License(MIT)

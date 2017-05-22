@@ -1179,6 +1179,30 @@ function isUndefined (value) {
     return (value === undefined);
 }
 
+// ************************************************************************************************
+//
+// isError
+//
+// Check if value is a error object or not
+//
+// Argument(s):
+// obj : Argument that needs to be checked if it is error object or not
+//
+// Examples:
+//     isError(new Error());                // returns true
+//     isError(new RangeError());           // returns true
+//     isError(new ReferenceError());       // returns true
+//     isError(new TypeError());            // returns true
+//
+// ************************************************************************************************
+function isError (obj) {
+    return (isObject(obj) && obj !== null) ?
+            ((Object.prototype.toString.call(obj) === '[object Error]') ||
+                (Object.prototype.toString.call(obj) === '[object DOMException]') ||
+                (isString(obj.message) && isString(obj.name) && (obj.constructor !== {}.constructor))) :
+            false;
+}
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1194,6 +1218,7 @@ exports = module.exports = {
     isBlank              : isBlank,
     isBoolean            : isBoolean,
     isEmpty              : isEmpty,
+    isError              : isError,
     isFalse              : isFalse,
     isFunction           : isFunction,
     isHexaColor          : isHexaColor,
