@@ -346,6 +346,25 @@ ratify.isHexaColor('800080');           // returns true
 ratify.isHexaColor('#8K0K8K');          // returns false
 ratify.isHexaColor('#helloworld');      // returns false
 
+//
+// Check if the specified object is set or not
+//
+ratify.isSet('');                 // returns false
+ratify.isSet(null);               // returns false
+ratify.isSet(new Set());          // returns true
+ratify.isSet(new Set(1, 2, 3));   // returns true
+ratify.isSet(new WeakSet);        // returns false
+ratify.isSet(new Set[1, 2, 3]);   // returns true
+
+//
+// Check if the specified object is weakset or not
+//
+ratify.isWeakSet('');               // returns false
+ratify.isWeakSet(null);             // returns false
+ratify.isWeakSet(new WeakSet());    // returns true
+ratify.isWeakSet(new Set);          // returns false
+ratify.isWeakSet(new WeakSet[{}]);  // returns true
+
 ```
 
 ### License(MIT)

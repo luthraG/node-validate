@@ -1117,6 +1117,48 @@ function isHexaColor(str) {
         return hexaColor.test(str);
 }
 
+// ************************************************************************************************
+//
+// isSet
+//
+// Check if value is a set or not
+//
+// Argument(s):
+// obj : It takes an object as argument that needs to be checked if it is set or not 
+//
+// Examples:
+//     isSet('');                 // returns false
+//     isSet(null);               // returns false
+//     isSet(new Set());          // returns true
+//     isSet(new WeakSet);        // returns false
+//     isSet(new Set[1, 2, 3]);   // returns true
+//
+// ************************************************************************************************
+function isSet(obj) {
+   return (Object.prototype.toString.call(obj) === '[object Set]');
+}
+
+// ************************************************************************************************
+//
+// isWeakSet
+//
+// Check if value is a set or not
+//
+// Argument(s):
+// obj : It takes an object as argument that needs to be checked if it is set or not 
+//
+// Examples:
+//     isWeakSet('');               // returns false
+//     isWeakSet(null);             // returns false
+//     isWeakSet(new WeakSet());    // returns true
+//     isWeakSet(new Set);          // returns false
+//     isWeakSet(new WeakSet[{}]);  // returns true
+//
+// ************************************************************************************************
+function isWeakSet(obj) {
+   return (Object.prototype.toString.call(obj) === '[object WeakSet]');
+}
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1147,6 +1189,7 @@ exports = module.exports = {
     isObject             : isObject,
     isPalindrome         : isPalindrome,
     isRegExp             : isRegExp,
+    isSet                : isSet,
     isStrictObject       : isStrictObject,
     isStrictBoolean      : isStrictBoolean,
     isString             : isString,
@@ -1156,6 +1199,7 @@ exports = module.exports = {
     isURIEncoded         : isURIEncoded,
     isUUID               : isUUID,
     isValidEmail         : isValidEmail,
+    isWeakSet            : isWeakSet,
     isWhiteSpace         : isWhiteSpace,
     objectEquals         : objectEquals,
     startsWith           : startsWith
