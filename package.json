@@ -1,6 +1,6 @@
 {
     "name"              : "node-ratify",
-    "version"           : "1.0.13",
+    "version"           : "1.0.14",
     "description"       : "A rich and efficient node validation library for String, Number, Date and Javascript Objects",
     "main"              : "./validate.js",
     "keywords"          : [
