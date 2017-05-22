@@ -15,7 +15,8 @@ ratify.isBase64('bm9kZS1yYXRpZnk='); //=> true
 The library can also be installed through [npm][npm]
 
 ```bash
-$ npm install node-ratify
+$ npm install -g node-ratify
+$ npm install --save node-ratify
 ```
 
 ### Client-side usage
@@ -35,7 +36,9 @@ $ bower install node-ratify
 
 ### Clone the repo
 
-git clone https://github.com/luthraG/node-validate.git
+```bash
+$ git clone https://github.com/luthraG/node-validate.git
+```
 
 ### Validators
 
