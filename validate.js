@@ -1183,7 +1183,7 @@ function isUndefined (value) {
 //
 // isError
 //
-// Check if value is a error object or not
+// Check if value is an error object or not
 //
 // Argument(s):
 // obj : Argument that needs to be checked if it is error object or not
@@ -1201,6 +1201,32 @@ function isError (obj) {
                 (Object.prototype.toString.call(obj) === '[object DOMException]') ||
                 (isString(obj.message) && isString(obj.name) && (obj.constructor !== {}.constructor))) :
             false;
+}
+
+// ************************************************************************************************
+//
+// isSystemError
+//
+// Check if value is a system error object or not
+//
+// Argument(s):
+// error : Argument that needs to be checked if it is system error object or not
+//
+// Examples:
+//     var error = new Error();
+//     error.code = 'ECONNRESET';
+//     isSystemError(new Error());              // returns false
+//     isSystemError(error);           			// returns true
+//     isSystemError(new ReferenceError());     // returns false
+//     isSystemError(new TypeError());          // returns false
+//
+// ************************************************************************************************
+function isSystemError (error) {
+    if (!isError(error) || !(error && error.code)) {
+        return false;
+    } else {
+        return SYSTEM_ERROR_CODES[error.code];
+    }
 }
 
 exports = module.exports = {
@@ -1238,6 +1264,7 @@ exports = module.exports = {
     isStrictObject       : isStrictObject,
     isStrictBoolean      : isStrictBoolean,
     isString             : isString,
+    isSystemError        : isSystemError,
     isTitleCase          : isTitleCase,
     isTrue               : isTrue,
     isUndefined          : isUndefined,
@@ -1249,4 +1276,130 @@ exports = module.exports = {
     isWhiteSpace         : isWhiteSpace,
     objectEquals         : objectEquals,
     startsWith           : startsWith
+};
+
+//
+// Constant that contains various system error codes
+//
+var SYSTEM_ERROR_CODES  = {
+    'E2BIG'             : true,
+    'EACCES'            : true,
+    'EADDRINUSE'        : true,
+    'EADDRNOTAVAIL'     : true,
+    'EAFNOSUPPORT'      : true,
+    'EAGAIN'            : true,
+    'EALREADY'          : true,
+    'EBADE'             : true,
+    'EBADF'             : true,
+    'EBADFD'            : true,
+    'EBADMSG'           : true,
+    'EBADR'             : true,
+    'EBADRQC'           : true,
+    'EBADSLT'           : true,
+    'EBUSY'             : true,
+    'ECANCELED'         : true,
+    'ECHILD'            : true,
+    'ECHRNG'            : true,
+    'ECOMM'             : true,
+    'ECONNABORTED'      : true,
+    'ECONNREFUSED'      : true,
+    'ECONNRESET'        : true,
+    'EDEADLK'           : true,
+    'EDEADLOCK'         : true,
+    'EDESTADDRREQ'      : true,
+    'EDOM'              : true,
+    'EDQUOT'            : true,
+    'EEXIST'            : true,
+    'EFAULT'            : true,
+    'EFBIG'             : true,
+    'EHOSTDOWN'         : true,
+    'EHOSTUNREACH'      : true,
+    'EIDRM'             : true,
+    'EILSEQ'            : true,
+    'EINPROGRESS'       : true,
+    'EINTR'             : true,
+    'EINVAL'            : true,
+    'EIO'               : true,
+    'EISCONN'           : true,
+    'EISDIR'            : true,
+    'EISNAM'            : true,
+    'EKEYEXPIRED'       : true,
+    'EKEYREJECTED'      : true,
+    'EKEYREVOKED'       : true,
+    'EL2HLT'            : true,
+    'EL2NSYNC'          : true,
+    'EL3HLT'            : true,
+    'EL3RST'            : true,
+    'ELIBACC'           : true,
+    'ELIBBAD'           : true,
+    'ELIBMAX'           : true,
+    'ELIBSCN'           : true,
+    'ELIBEXEC'          : true,
+    'ELOOP'             : true,
+    'EMEDIUMTYPE'       : true,
+    'EMFILE'            : true,
+    'EMLINK'            : true,
+    'EMSGSIZE'          : true,
+    'EMULTIHOP'         : true,
+    'ENAMETOOLONG'      : true,
+    'ENETDOWN'          : true,
+    'ENETRESET'         : true,
+    'ENETUNREACH'       : true,
+    'ENFILE'            : true,
+    'ENOBUFS'           : true,
+    'ENODATA'           : true,
+    'ENODEV'            : true,
+    'ENOENT'            : true,
+    'ENOEXEC'           : true,
+    'ENOKEY'            : true,
+    'ENOLCK'            : true,
+    'ENOLINK'           : true,
+    'ENOMEDIUM'         : true,
+    'ENOMEM'            : true,
+    'ENOMSG'            : true,
+    'ENONET'            : true,
+    'ENOPKG'            : true,
+    'ENOPROTOOPT'       : true,
+    'ENOSPC'            : true,
+    'ENOSR'             : true,
+    'ENOSTR'            : true,
+    'ENOSYS'            : true,
+    'ENOTBLK'           : true,
+    'ENOTCONN'          : true,
+    'ENOTDIR'           : true,
+    'ENOTEMPTY'         : true,
+    'ENOTSOCK'          : true,
+    'ENOTSUP'           : true,
+    'ENOTTY'            : true,
+    'ENOTUNIQ'          : true,
+    'ENXIO'             : true,
+    'EOPNOTSUPP'        : true,
+    'EOVERFLOW'         : true,
+    'EPERM'             : true,
+    'EPFNOSUPPORT'      : true,
+    'EPIPE'             : true,
+    'EPROTO'            : true,
+    'EPROTONOSUPPORT'   : true,
+    'EPROTOTYPE'        : true,
+    'ERANGE'            : true,
+    'EREMCHG'           : true,
+    'EREMOTE'           : true,
+    'EREMOTEIO'         : true,
+    'ERESTART'          : true,
+    'EROFS'             : true,
+    'ESHUTDOWN'         : true,
+    'ESPIPE'            : true,
+    'ESOCKTNOSUPPORT'   : true,
+    'ESRCH'             : true,
+    'ESTALE'            : true,
+    'ESTRPIPE'          : true,
+    'ETIME'             : true,
+    'ETIMEDOUT'         : true,
+    'ETXTBSY'           : true,
+    'EUCLEAN'           : true,
+    'EUNATCH'           : true,
+    'EUSERS'            : true,
+    'EWOULDBLOCK'       : true,
+    'EXDEV'             : true,
+    'EXFULL'            : true
 };

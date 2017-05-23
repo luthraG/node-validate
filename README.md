@@ -55,9 +55,11 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isBlank(str)** - check if a string is blank.
 - **isBoolean(str)** - check if the value is boolean value i.e. true, false, 1, or 0.
 - **isEmpty(str)** - check if a string is empty. A string containing only whitespaces is blank string but not empty string.
+- **isError(value)** - check if value is an error object or not
 - **isFalse(value)** - check if the value passed is false.
 - **isFunction(value)** - check if the value is function or not.
-- **isHexadecimal(str)** - Check if the string is a hexadecimal number.
+- **isHexaColor(str)** - check if the specified string is valid hexadecimal color value or not.
+- **isHexadecimal(str)** - check if the string is a hexadecimal number.
 - **isJSON(str)** - check if a string is a valid JSON string.
 - **isLowerCase(str)** - check if a string is in lowercase.
 - **isMACAddress(str)** - check if the string value is a valid MAC address.
@@ -69,15 +71,19 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isObject(value)** - check if the value passed is Object.
 - **isPalindrome(str)** - check if input string is a palindrome or not.
 - **isRegExp(value)** - check if the value is RegExp or not.
+- **isSet(value)** - check if the specified object is set or not
 - **isStrictBoolean(value)** - check if the value is boolean object or not.
 - **isStrictObject(value)** - check if the value is Object or not.
 - **isString(value)** - check if the value passed is string.
+- **isSystemError(value)** - check is the value is system error object or not.
 - **isTitleCase(value)** - check is the string is title case i.e. first letter of each word in the string is capital case.
 - **isTrue(value)** - check if the value passed is true.
+- **isUndefined(value)** - check if value is a undefined or not.
 - **isUpperCase(str)** - check if a string is in uppercase.
 - **isURIEncoded(str)** - check if String is URI encoded.
 - **isUUID(str)** - check if the specified string is uuid(of specified version).
 - **isValidEmail(str)** - check if the string is a valid email address.
+- **isWeakSet(str)** - check if value is a weak set or not.
 - **isWhiteSpace(str)** - check if a string contains only whitespaces.
 - **objectEquals(obj1, obj2)** - check if two objects(String, Object, Number, Date, function, RegExp, Array) are equal or not.
 - **startsWith(str, starts, position, strict)** - check if a string/number/array starts with another string/number/array.<br />
@@ -380,6 +386,17 @@ ratify.isError(new Error());                // returns true
 ratify.isError(new RangeError());           // returns true
 ratify.isError(new ReferenceError());       // returns true
 ratify.isError(new TypeError());            // returns true
+
+//
+// Check if passed object is system error object or not
+//
+var error = new Error();
+error.code = 'ECONNRESET';
+
+ratify.isSystemError(new Error());          // returns false
+ratify.isSystemError(error);           		// returns true
+ratify.isSystemError(new ReferenceError()); // returns false
+ratify.isSystemError(new TypeError());      // returns false
 
 ```
 
