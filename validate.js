@@ -1247,6 +1247,48 @@ function isDate (value) {
     return (isObject(value) && value !== null && (Object.prototype.toString.call(value) === '[object Date]'));
 }
 
+// ************************************************************************************************
+//
+// isMap
+//
+// Check if value is a map or not
+//
+// Argument(s):
+// obj : It takes an object as argument that needs to be checked if it is map or not
+//
+// Examples:
+//     isMap('');                 // returns false
+//     isMap(null);               // returns false
+//     isMap(new Map());          // returns true
+//     isMap(new WeakMap);        // returns false
+//     isMap(new Map([['key1', 'value1'], ['key2', 'value2']]));   // returns true
+//
+// ************************************************************************************************
+function isMap(obj) {
+   return (Object.prototype.toString.call(obj) === '[object Map]');
+}
+
+// ************************************************************************************************
+//
+// isWeakMap
+//
+// Check if value is a weak map or not
+//
+// Argument(s):
+// obj : It takes an object as argument that needs to be checked if it is map or not
+//
+// Examples:
+//     isWeakMap('');               // returns false
+//     isWeakMap(null);             // returns false
+//     isWeakMap(new WeakMap());    // returns true
+//     isWeakMap(new Map);          // returns false
+//
+// ************************************************************************************************
+function isWeakMap(obj) {
+   return (Object.prototype.toString.call(obj) === '[object WeakMap]');
+}
+
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1271,6 +1313,7 @@ exports = module.exports = {
     isJSON               : isJSON,
     isLowerCase          : isLowerCase,
     isMACAddress         : isMACAddress,
+    isMap                : isMap,
     isMD5                : isMD5,
     isMethodPresent      : isMethodPresent,
     isNull               : isNull,
@@ -1291,6 +1334,7 @@ exports = module.exports = {
     isURIEncoded         : isURIEncoded,
     isUUID               : isUUID,
     isValidEmail         : isValidEmail,
+    isWeakMap            : isWeakMap,
     isWeakSet            : isWeakSet,
     isWhiteSpace         : isWhiteSpace,
     objectEquals         : objectEquals,

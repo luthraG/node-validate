@@ -64,6 +64,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isJSON(str)** - check if a string is a valid JSON string.
 - **isLowerCase(str)** - check if a string is in lowercase.
 - **isMACAddress(str)** - check if the string value is a valid MAC address.
+- **isMap(value)** - check if the value is map or not.
 - **isMD5(str)** - check if the string value is MD5 hash.
 - **isMethodPresent(obj, methodName)** - check if the object has the specified method present inside it.
 - **isNull(value)** - check if the value is null or undefined or Nan.
@@ -84,7 +85,8 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isURIEncoded(str)** - check if String is URI encoded.
 - **isUUID(str)** - check if the specified string is uuid(of specified version).
 - **isValidEmail(str)** - check if the string is a valid email address.
-- **isWeakSet(str)** - check if value is a weak set or not.
+- **isWeakMap(value)** - check if the value is weakmap or not.
+- **isWeakSet(value)** - check if value is a weak set or not.
 - **isWhiteSpace(str)** - check if a string contains only whitespaces.
 - **objectEquals(obj1, obj2)** - check if two objects(String, Object, Number, Date, function, RegExp, Array) are equal or not.
 - **startsWith(str, starts, position, strict)** - check if a string/number/array starts with another string/number/array.<br />
@@ -400,10 +402,27 @@ ratify.isSystemError(new ReferenceError()); // returns false
 ratify.isSystemError(new TypeError());      // returns false
 
 //
-// Check if paased object is date object or not
+// Check if passed object is date object or not
 //
 ratify.isDate(new Date());       // returns true
 ratify.isDate('5/23/2017');      // returns false
+
+//
+// Check if passed value is map or not
+//
+ratify.isMap('');                 // returns false
+ratify.isMap(null);               // returns false
+ratify.isMap(new Map());          // returns true
+ratify.isMap(new WeakMap);        // returns false
+ratify.isMap(new Map([['key1', 'value1'], ['key2', 'value2']]));   // returns true
+
+//
+// Check if passed value is weak map or not
+//
+ratify.isWeakMap('');               // returns false
+ratify.isWeakMap(null);             // returns false
+ratify.isWeakMap(new WeakMap());    // returns true
+ratify.isWeakMap(new Map);          // returns false
 
 ```
 
