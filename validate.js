@@ -1229,6 +1229,24 @@ function isSystemError (error) {
     }
 }
 
+// ************************************************************************************************
+//
+// isDate
+//
+// Check if value is a date object or not
+//
+// Argument(s):
+// value : Argument that needs to be checked if it is date object or not
+//
+// Examples:
+//     isDate(new Date());       // returns true
+//     isDate('5/23/2017');      // returns false
+//
+// ************************************************************************************************
+function isDate (value) {
+    return (isObject(value) && value !== null && (Object.prototype.toString.call(value) === '[object Date]'));
+}
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1244,6 +1262,7 @@ exports = module.exports = {
     isBlank              : isBlank,
     isBoolean            : isBoolean,
     isEmpty              : isEmpty,
+    isDate               : isDate,
     isError              : isError,
     isFalse              : isFalse,
     isFunction           : isFunction,

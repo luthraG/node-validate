@@ -54,6 +54,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isBase64(str)** - check if a string is base64 encoded.
 - **isBlank(str)** - check if a string is blank.
 - **isBoolean(str)** - check if the value is boolean value i.e. true, false, 1, or 0.
+- **isDate(value)** - check if the value is date object or not.
 - **isEmpty(str)** - check if a string is empty. A string containing only whitespaces is blank string but not empty string.
 - **isError(value)** - check if value is an error object or not
 - **isFalse(value)** - check if the value passed is false.
@@ -397,6 +398,12 @@ ratify.isSystemError(new Error());          // returns false
 ratify.isSystemError(error);           		// returns true
 ratify.isSystemError(new ReferenceError()); // returns false
 ratify.isSystemError(new TypeError());      // returns false
+
+//
+// Check if paased object is date object or not
+//
+ratify.isDate(new Date());       // returns true
+ratify.isDate('5/23/2017');      // returns false
 
 ```
 
