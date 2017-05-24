@@ -8,7 +8,9 @@ var        alpha = /^[A-Z]+$/i,
             md5  = /^[A-Fa-f0-9]{32}$/,
     macAddress1  = /^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$/,
     macAddress2  = /^([0-9a-fA-F][0-9a-fA-F]-){5}([0-9a-fA-F][0-9a-fA-F])$/,
-      hexaColor  = /^#?([0-9A-F]{3}|[0-9A-F]{6})$/i;
+      hexaColor  = /^#?([0-9A-F]{3}|[0-9A-F]{6})$/i,
+      halfWidth  = /[\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/,
+      fullWidth  = /[^\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/;
 
 // https://en.wikipedia.org/wiki/Universally_unique_identifier#Definition
 var uuid = {
@@ -1216,7 +1218,7 @@ function isError (obj) {
 //     var error = new Error();
 //     error.code = 'ECONNRESET';
 //     isSystemError(new Error());              // returns false
-//     isSystemError(error);           			// returns true
+//     isSystemError(error);                    // returns true
 //     isSystemError(new ReferenceError());     // returns false
 //     isSystemError(new TypeError());          // returns false
 //
@@ -1288,6 +1290,52 @@ function isWeakMap(obj) {
    return (Object.prototype.toString.call(obj) === '[object WeakMap]');
 }
 
+// ************************************************************************************************
+//
+// isHalfWidth
+//
+// Check if string contains half width characters or not
+//
+// Argument(s):
+// str : It takes an string as argument that needs to be checked if it contains half width characters or not
+//
+// Examples:
+//     isHalfWidth('');               // returns false
+//     isHalfWidth(null);             // returns false
+//     isHalfWidth('ｱﾃﾞﾁｬｴｳｨｵﾌﾟ');    // returns true
+//     isHalfWidth('ｱﾃﾞﾁｬｴｳｨ');       // returns true
+//
+// ************************************************************************************************
+function isHalfWidth(str) {
+   if (!isString(str))
+        return false;
+    else
+        return halfWidth.test(str);
+}
+
+// ************************************************************************************************
+//
+// isFullWidth
+//
+// Check if string contains full width characters or not
+//
+// Argument(s):
+// str : It takes an string as argument that needs to be checked if it contains full width characters or not
+//
+// Examples:
+//     isFullWidth('');               // returns false
+//     isFullWidth(null);             // returns false
+//     isFullWidth('ポヲルダマ');     // returns true
+//     isFullWidth('ポヲルダ');       // returns true
+//
+// ************************************************************************************************
+function isFullWidth(str) {
+   if (!isString(str))
+        return false;
+    else
+        return fullWidth.test(str);
+}
+
 
 exports = module.exports = {
     contains             : contains,
@@ -1307,7 +1355,9 @@ exports = module.exports = {
     isDate               : isDate,
     isError              : isError,
     isFalse              : isFalse,
+    isFullWidth          : isFullWidth,
     isFunction           : isFunction,
+    isHalfWidth          : isHalfWidth,
     isHexaColor          : isHexaColor,
     isHexadecimal        : isHexadecimal,
     isJSON               : isJSON,

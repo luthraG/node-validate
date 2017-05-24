@@ -58,7 +58,9 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isEmpty(str)** - check if a string is empty. A string containing only whitespaces is blank string but not empty string.
 - **isError(value)** - check if value is an error object or not
 - **isFalse(value)** - check if the value passed is false.
+- **isFullWidth(str)** - check if the specified string contains full width characters or not.
 - **isFunction(value)** - check if the value is function or not.
+- **isHalfWidth(str)** - check if the specified string contains half width characters or not.
 - **isHexaColor(str)** - check if the specified string is valid hexadecimal color value or not.
 - **isHexadecimal(str)** - check if the string is a hexadecimal number.
 - **isJSON(str)** - check if a string is a valid JSON string.
@@ -397,7 +399,7 @@ var error = new Error();
 error.code = 'ECONNRESET';
 
 ratify.isSystemError(new Error());          // returns false
-ratify.isSystemError(error);           		// returns true
+ratify.isSystemError(error);                // returns true
 ratify.isSystemError(new ReferenceError()); // returns false
 ratify.isSystemError(new TypeError());      // returns false
 
@@ -423,6 +425,22 @@ ratify.isWeakMap('');               // returns false
 ratify.isWeakMap(null);             // returns false
 ratify.isWeakMap(new WeakMap());    // returns true
 ratify.isWeakMap(new Map);          // returns false
+
+//
+// Check if passed string contains half width characters
+//
+ratify.isHalfWidth('');               // returns false
+ratify.isHalfWidth(null);             // returns false
+ratify.isHalfWidth('ｱﾃﾞﾁｬｴｳｨｵﾌﾟ');      // returns true
+ratify.isHalfWidth('ｱﾃﾞﾁｬｴｳｨ');         // returns true
+
+//
+// Check if passed string contains full width characters
+//
+ratify.isFullWidth('');               // returns false
+ratify.isFullWidth(null);             // returns false
+ratify.isFullWidth('ポヲルダマ');      // returns true
+ratify.isFullWidth('ポヲルダ');        // returns true
 
 ```
 
