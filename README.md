@@ -75,6 +75,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isNumeric(str)** - check if a string is number(Integer/Floating point et al.).
 - **isObject(value)** - check if the value passed is Object.
 - **isPalindrome(str)** - check if input string is a palindrome or not.
+- **isPort(str)** - check if input string contains a valid port number or not.
 - **isPrintableASCII(str)** - check if all the characters of input string are printable ASCII characters or not.
 - **isRegExp(value)** - check if the value is RegExp or not.
 - **isSet(value)** - check if the specified object is set or not
@@ -468,6 +469,13 @@ ratify.isPrintableASCII('\n\t\t');      // returns false
 ratify.isVariableWidth('ギヰヺタヰｬｴｳ');        // returns true
 ratify.isVariableWidth('ポヲルダマ');          // returns false
 ratify.isVariableWidth('ｱﾃﾞﾁｬｴｳｨｵﾌﾟ');          // returns false
+
+//
+// Check if string contains a valid port number
+//
+ratify.isPort('0');        // returns false
+ratify.isPort('8000');     // returns true
+ratify.isPort('-421');     // returns false
 
 ```
 

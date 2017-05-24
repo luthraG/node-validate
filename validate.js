@@ -8,6 +8,8 @@ var          alpha  = /^[A-Z]+$/i,
          halfWidth  = /[\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/,
          hexaColor  = /^#?([0-9A-F]{3}|[0-9A-F]{6})$/i,
        hexadecimal  = /^[0-9A-F]+$/i,
+         latitude   = /^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$/,
+         longitude  = /^[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$/,
           japanese  = /[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/,
        macAddress1  = /^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$/,
        macAddress2  = /^([0-9a-fA-F][0-9a-fA-F]-){5}([0-9a-fA-F][0-9a-fA-F])$/,
@@ -1404,6 +1406,38 @@ function isVariableWidth(str) {
     return (isHalfWidth(str) && isFullWidth(str));
 }
 
+//
+// Helper method to filter integer value
+//
+function filterInt(value) {
+  if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value))
+    return Number(value);
+  return NaN;
+}
+
+// ************************************************************************************************
+//
+// isPort
+//
+// Check if string contains a valid port number
+//
+// Argument(s):
+// str : It takes an string as argument that needs to be checked if it contains valid port number
+//
+// Examples:
+//     isPort('0');        // returns false
+//     isPort('8000');     // returns true
+//     isPort('-421');     // returns false
+//
+// ************************************************************************************************
+function isPort(str) {
+    var i = filterInt(str);
+    if (isNaN(i))
+        return false;
+    else
+        return i > 0 && i < 65536;
+}
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1438,6 +1472,7 @@ exports = module.exports = {
     isNumber             : isNumber,
     isNumeric            : isNumeric,
     isObject             : isObject,
+    isPort               : isPort,
     isPalindrome         : isPalindrome,
     isPrintableASCII     : isPrintableASCII,
     isRegExp             : isRegExp,
