@@ -8,13 +8,14 @@ var          alpha  = /^[A-Z]+$/i,
          halfWidth  = /[\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/,
          hexaColor  = /^#?([0-9A-F]{3}|[0-9A-F]{6})$/i,
        hexadecimal  = /^[0-9A-F]+$/i,
-         latitude   = /^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?)$/,
-         longitude  = /^[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$/,
+          latitude  = /^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$/,
+         longitude  = /^[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$/,
           japanese  = /[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/,
        macAddress1  = /^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$/,
        macAddress2  = /^([0-9a-fA-F][0-9a-fA-F]-){5}([0-9a-fA-F][0-9a-fA-F])$/,
                md5  = /^[A-Fa-f0-9]{32}$/,
-    printableASCII  = /^[\x20-\x7E]+$/;
+    printableASCII  = /^[\x20-\x7E]+$/,
+            semver  = /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$/;
 
 // https://en.wikipedia.org/wiki/Universally_unique_identifier#Definition
 var uuid = {
@@ -1438,6 +1439,29 @@ function isPort(str) {
         return i > 0 && i < 65536;
 }
 
+// ************************************************************************************************
+//
+// isSemver
+//
+// Check if string contains a valid semantic versioning
+// Check http://semver.org/ for more details
+//
+// Argument(s):
+// str : It takes an string as argument that needs to be checked if it contains valid semantic versioning
+//
+// Examples:
+//     isSemver('v1.0.0');              // returns true
+//     isSemver('1.0.0-alpha.1');       // returns true
+//     isSemver('alpha.beta.gamma');    // returns false
+//
+// ************************************************************************************************
+function isSemver(str) {
+    if (!isString(str))
+        return false;
+    else
+        return semver.test(str);
+}
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1476,6 +1500,7 @@ exports = module.exports = {
     isPalindrome         : isPalindrome,
     isPrintableASCII     : isPrintableASCII,
     isRegExp             : isRegExp,
+    isSemver             : isSemver,
     isSet                : isSet,
     isStrictObject       : isStrictObject,
     isStrictBoolean      : isStrictBoolean,
