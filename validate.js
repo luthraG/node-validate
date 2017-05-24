@@ -1,17 +1,18 @@
 
-var        alpha = /^[A-Z]+$/i,
-    alphanumeric = /^[0-9A-Z]+$/i,
-           ascii = /^[\x00-\x7F]+$/,
-          base64 = /^([A-Za-z0-9+\/]{4})*([A-Za-z0-9+\/]{4}|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{2}==)$/i,
-           email = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-     hexadecimal = /^[0-9A-F]+$/i,
-             md5 = /^[A-Fa-f0-9]{32}$/,
-     macAddress1 = /^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$/,
-     macAddress2 = /^([0-9a-fA-F][0-9a-fA-F]-){5}([0-9a-fA-F][0-9a-fA-F])$/,
-       hexaColor = /^#?([0-9A-F]{3}|[0-9A-F]{6})$/i,
-       halfWidth = /[\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/,
-       fullWidth = /[^\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/,
-        japanese = /[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/;
+var          alpha  = /^[A-Z]+$/i,
+      alphanumeric  = /^[0-9A-Z]+$/i,
+             ascii  = /^[\x00-\x7F]+$/,
+            base64  = /^([A-Za-z0-9+\/]{4})*([A-Za-z0-9+\/]{4}|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{2}==)$/i,
+             email  = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+         fullWidth  = /[^\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/,
+         halfWidth  = /[\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/,
+         hexaColor  = /^#?([0-9A-F]{3}|[0-9A-F]{6})$/i,
+       hexadecimal  = /^[0-9A-F]+$/i,
+          japanese  = /[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/,
+       macAddress1  = /^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$/,
+       macAddress2  = /^([0-9a-fA-F][0-9a-fA-F]-){5}([0-9a-fA-F][0-9a-fA-F])$/,
+               md5  = /^[A-Fa-f0-9]{32}$/,
+    printableASCII  = /^[\x20-\x7E]+$/;
 
 // https://en.wikipedia.org/wiki/Universally_unique_identifier#Definition
 var uuid = {
@@ -1360,6 +1361,29 @@ function containsJapanese(str) {
         return japanese.test(str);
 }
 
+// ************************************************************************************************
+//
+// isPrintableASCII
+//
+// Check if string contains printable ASCII characters or not
+//
+// Argument(s):
+// str : It takes an string as argument that needs to be checked if it contains printable ASCII characters or not
+//
+// Examples:
+//     isPrintableASCII('');            // returns false
+//     isPrintableASCII(null);          // returns false
+//     isPrintableASCII('世界');          // returns false
+//     isPrintableASCII('Helloworld');   // returns true
+//     isPrintableASCII('\n\t\t');      // returns false
+//
+// ************************************************************************************************
+function isPrintableASCII(str) {
+    if (!isString(str))
+        return false;
+    else
+        return printableASCII.test(str);
+}
 
 exports = module.exports = {
     contains             : contains,
@@ -1367,8 +1391,8 @@ exports = module.exports = {
     containsIgnoreCase   : containsIgnoreCase,
     containsJapanese     : containsJapanese,
     containsKey          : containsKey,
-    hasAnyMethod         : hasAnyMethod,
     endsWith             : endsWith,
+    hasAnyMethod         : hasAnyMethod,
     isAlpha              : isAlpha,
     isAlphanumeric       : isAlphanumeric,
     isArray              : isArray,
@@ -1396,6 +1420,7 @@ exports = module.exports = {
     isNumeric            : isNumeric,
     isObject             : isObject,
     isPalindrome         : isPalindrome,
+    isPrintableASCII     : isPrintableASCII,
     isRegExp             : isRegExp,
     isSet                : isSet,
     isStrictObject       : isStrictObject,
