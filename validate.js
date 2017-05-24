@@ -1484,6 +1484,28 @@ function isLatitude(str) {
         return latitude.test(str);
 }
 
+// ************************************************************************************************
+//
+// isLongitude
+//
+// Check if string contains a valid longitude value
+//
+// Argument(s):
+// str : It takes an string as argument that needs to be checked if it contains valid longitude
+//
+// Examples:
+//     isLongitude('+90');               // returns true
+//     isLongitude('+40.58517');         // returns true
+//     isLongitude('alpha.beta.gamma');  // returns false
+//
+// ************************************************************************************************
+function isLongitude(str) {
+    if (!isString(str))
+        return false;
+    else
+        return longitude.test(str);
+}
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1510,6 +1532,7 @@ exports = module.exports = {
     isHexadecimal        : isHexadecimal,
     isJSON               : isJSON,
     isLatitude           : isLatitude,
+    isLongitude          : isLongitude,
     isLowerCase          : isLowerCase,
     isMACAddress         : isMACAddress,
     isMap                : isMap,
