@@ -65,6 +65,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isHexaColor(str)** - check if the specified string is valid hexadecimal color value or not.
 - **isHexadecimal(str)** - check if the string is a hexadecimal number.
 - **isJSON(str)** - check if a string is a valid JSON string.
+- **isLatitude(str)** - check if the string contains valid latitude value.
 - **isLowerCase(str)** - check if a string is in lowercase.
 - **isMACAddress(str)** - check if the string value is a valid MAC address.
 - **isMap(value)** - check if the value is map or not.
@@ -484,6 +485,13 @@ ratify.isPort('-421');     // returns false
 ratify.isSemver('v1.0.0');              // returns true
 ratify.isSemver('1.0.0-alpha.1');       // returns true
 ratify.isSemver('alpha.beta.gamma');    // returns false
+
+//
+// Check if the string contains valid latitude value
+//
+ratify.isLatitude('+90');               // returns true
+ratify.isLatitude('+40.58517');         // returns true
+ratify.isLatitude('alpha.beta.gamma');  // returns false
 
 ```
 

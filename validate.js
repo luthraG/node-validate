@@ -1462,6 +1462,28 @@ function isSemver(str) {
         return semver.test(str);
 }
 
+// ************************************************************************************************
+//
+// isLatitude
+//
+// Check if string contains a valid latitude value
+//
+// Argument(s):
+// str : It takes an string as argument that needs to be checked if it contains valid latitude
+//
+// Examples:
+//     isLatitude('+90');               // returns true
+//     isLatitude('+40.58517');         // returns true
+//     isLatitude('alpha.beta.gamma');  // returns false
+//
+// ************************************************************************************************
+function isLatitude(str) {
+    if (!isString(str))
+        return false;
+    else
+        return latitude.test(str);
+}
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1487,6 +1509,7 @@ exports = module.exports = {
     isHexaColor          : isHexaColor,
     isHexadecimal        : isHexadecimal,
     isJSON               : isJSON,
+    isLatitude           : isLatitude,
     isLowerCase          : isLowerCase,
     isMACAddress         : isMACAddress,
     isMap                : isMap,
