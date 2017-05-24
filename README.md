@@ -78,6 +78,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isPort(str)** - check if input string contains a valid port number or not.
 - **isPrintableASCII(str)** - check if all the characters of input string are printable ASCII characters or not.
 - **isRegExp(value)** - check if the value is RegExp or not.
+- **isSemver(str)** - check if specified string contains a value that follows semantics versioning rule.
 - **isSet(value)** - check if the specified object is set or not
 - **isStrictBoolean(value)** - check if the value is boolean object or not.
 - **isStrictObject(value)** - check if the value is Object or not.
@@ -476,6 +477,13 @@ ratify.isVariableWidth('ｱﾃﾞﾁｬｴｳｨｵﾌﾟ');          // returns
 ratify.isPort('0');        // returns false
 ratify.isPort('8000');     // returns true
 ratify.isPort('-421');     // returns false
+
+//
+// Check if string contains a value that follows semantics versioning rule
+//
+ratify.isSemver('v1.0.0');              // returns true
+ratify.isSemver('1.0.0-alpha.1');       // returns true
+ratify.isSemver('alpha.beta.gamma');    // returns false
 
 ```
 
