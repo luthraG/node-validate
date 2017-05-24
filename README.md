@@ -45,6 +45,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **contains(str)** - check if the string contains another string(Case sensitive search).
 - **containsDeepKey(obj)** - Safely reach into a 'nested' object and returns true if specified key is present.
 - **containsIgnoreCase(str)** - check if the string contains another string(Case insensitive search).
+- **containsJapanese(str)** - check if the string contains japanese characters.
 - **containsKey(obj, key)** - Safely reach into a object and returns true if specified key is present. 
 - **hasAnyMethod(obj)** - check if the object has any method present inside it.
 - **isAlpha(str)** - check if the string contains only alphabets, both upper and lower case.
@@ -441,6 +442,14 @@ ratify.isFullWidth('');               // returns false
 ratify.isFullWidth(null);             // returns false
 ratify.isFullWidth('ポヲルダマ');      // returns true
 ratify.isFullWidth('ポヲルダ');        // returns true
+
+//
+// Check if passed string contains japanese characters
+//
+ratify.containsJapanese('');            // returns false
+ratify.containsJapanese(null);          // returns false
+ratify.containsJapanese('世界');        // returns true
+ratify.containsJapanese('こんにちは');  // returns true
 
 ```
 

@@ -5,12 +5,13 @@ var        alpha = /^[A-Z]+$/i,
           base64 = /^([A-Za-z0-9+\/]{4})*([A-Za-z0-9+\/]{4}|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{2}==)$/i,
            email = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
      hexadecimal = /^[0-9A-F]+$/i,
-            md5  = /^[A-Fa-f0-9]{32}$/,
-    macAddress1  = /^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$/,
-    macAddress2  = /^([0-9a-fA-F][0-9a-fA-F]-){5}([0-9a-fA-F][0-9a-fA-F])$/,
-      hexaColor  = /^#?([0-9A-F]{3}|[0-9A-F]{6})$/i,
-      halfWidth  = /[\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/,
-      fullWidth  = /[^\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/;
+             md5 = /^[A-Fa-f0-9]{32}$/,
+     macAddress1 = /^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$/,
+     macAddress2 = /^([0-9a-fA-F][0-9a-fA-F]-){5}([0-9a-fA-F][0-9a-fA-F])$/,
+       hexaColor = /^#?([0-9A-F]{3}|[0-9A-F]{6})$/i,
+       halfWidth = /[\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/,
+       fullWidth = /[^\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/,
+        japanese = /[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/;
 
 // https://en.wikipedia.org/wiki/Universally_unique_identifier#Definition
 var uuid = {
@@ -1336,11 +1337,35 @@ function isFullWidth(str) {
         return fullWidth.test(str);
 }
 
+// ************************************************************************************************
+//
+// containsJapanese
+//
+// Check if string contains japanese characters or not
+//
+// Argument(s):
+// str : It takes an string as argument that needs to be checked if it contains japanese characters or not
+//
+// Examples:
+//     containsJapanese('');            // returns false
+//     containsJapanese(null);          // returns false
+//     containsJapanese('世界');          // returns true
+//     containsJapanese('こんにちは');   // returns true
+//
+// ************************************************************************************************
+function containsJapanese(str) {
+    if (!isString(str))
+        return false;
+    else
+        return japanese.test(str);
+}
+
 
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
     containsIgnoreCase   : containsIgnoreCase,
+    containsJapanese     : containsJapanese,
     containsKey          : containsKey,
     hasAnyMethod         : hasAnyMethod,
     endsWith             : endsWith,
