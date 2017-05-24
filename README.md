@@ -59,9 +59,9 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isEmpty(str)** - check if a string is empty. A string containing only whitespaces is blank string but not empty string.
 - **isError(value)** - check if value is an error object or not
 - **isFalse(value)** - check if the value passed is false.
-- **isFullWidth(str)** - check if the specified string contains full width characters or not.
+- **isFullWidth(str)** - check if the specified string contains any full width characters or not.
 - **isFunction(value)** - check if the value is function or not.
-- **isHalfWidth(str)** - check if the specified string contains half width characters or not.
+- **isHalfWidth(str)** - check if the specified string contains any half width characters or not.
 - **isHexaColor(str)** - check if the specified string is valid hexadecimal color value or not.
 - **isHexadecimal(str)** - check if the string is a hexadecimal number.
 - **isJSON(str)** - check if a string is a valid JSON string.
@@ -89,6 +89,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isURIEncoded(str)** - check if String is URI encoded.
 - **isUUID(str)** - check if the specified string is uuid(of specified version).
 - **isValidEmail(str)** - check if the string is a valid email address.
+- **isVariableWidth(str)** - check if the specified string contains both full width and half width characters.
 - **isWeakMap(value)** - check if the value is weakmap or not.
 - **isWeakSet(value)** - check if value is a weak set or not.
 - **isWhiteSpace(str)** - check if a string contains only whitespaces.
@@ -460,6 +461,13 @@ ratify.isPrintableASCII(null);          // returns false
 ratify.isPrintableASCII('世界');          // returns false
 ratify.isPrintableASCII('Helloworld');   // returns true
 ratify.isPrintableASCII('\n\t\t');      // returns false
+
+//
+// Check if string contains both half width and full width characters
+//
+ratify.isVariableWidth('ギヰヺタヰｬｴｳ');        // returns true
+ratify.isVariableWidth('ポヲルダマ');          // returns false
+ratify.isVariableWidth('ｱﾃﾞﾁｬｴｳｨｵﾌﾟ');          // returns false
 
 ```
 

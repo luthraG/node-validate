@@ -1385,6 +1385,25 @@ function isPrintableASCII(str) {
         return printableASCII.test(str);
 }
 
+// ************************************************************************************************
+//
+// isVariableWidth
+//
+// Check if string contains both full width and half width characters
+//
+// Argument(s):
+// str : It takes an string as argument that needs to be checked if it contains both half width and full width characters
+//
+// Examples:
+//     isVariableWidth('ギヰヺタヰｬｴｳ');        // returns true
+//     isVariableWidth('ポヲルダマ');          // returns false
+//     isVariableWidth('ｱﾃﾞﾁｬｴｳｨｵﾌﾟ');          // returns false
+//
+// ************************************************************************************************
+function isVariableWidth(str) {
+    return (isHalfWidth(str) && isFullWidth(str));
+}
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1434,6 +1453,7 @@ exports = module.exports = {
     isURIEncoded         : isURIEncoded,
     isUUID               : isUUID,
     isValidEmail         : isValidEmail,
+    isVariableWidth      : isVariableWidth,
     isWeakMap            : isWeakMap,
     isWeakSet            : isWeakSet,
     isWhiteSpace         : isWhiteSpace,
