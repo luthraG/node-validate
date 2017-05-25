@@ -73,6 +73,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isMap(value)** - check if the value is map or not.
 - **isMD5(str)** - check if the string value is MD5 hash.
 - **isMethodPresent(obj, methodName)** - check if the object has the specified method present inside it.
+- **isMultiByte(str)** - check if string contains one or more multibyte characters
 - **isNull(value)** - check if the value is null or undefined or Nan.
 - **isNumber(value)** - check if the value passed is Number object.
 - **isNumeric(str)** - check if a string is number(Integer/Floating point et al.).
@@ -524,6 +525,13 @@ ratify.isUnixFilePath('/mnt/data/tmp');                 // returns false
 ratify.isFilePath('C:\\BatmanSharedDevice\\');          // returns true
 ratify.isFilePath('\mnt\data');                         // returns true
 ratify.isFilePath('/mnt/data');                         // returns false
+
+//
+// Check if string contains one or more multibyte characters
+//
+ratify.isMultiByte('節點');               // returns true
+ratify.isMultiByte('helloworld');        // returns false
+ratify.isMultiByte('こんにちは');         // returns true
 
 ```
 
