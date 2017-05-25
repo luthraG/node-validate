@@ -59,6 +59,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isEmpty(str)** - check if a string is empty. A string containing only whitespaces is blank string but not empty string.
 - **isError(value)** - check if value is an error object or not
 - **isFalse(value)** - check if the value passed is false.
+- **isFilePath(value)** - check if the value is a valid file path i.e. window file path and unix file path.
 - **isFullWidth(str)** - check if the specified string contains any full width characters or not.
 - **isFunction(value)** - check if the value is function or not.
 - **isHalfWidth(str)** - check if the specified string contains any half width characters or not.
@@ -514,8 +515,15 @@ ratify.isWinFilePath('/mnt/data/tmp');                  // returns false
 // Check if string contains a valid unix path
 //
 ratify.isUnixFilePath('C:\\BatmanSharedDevice\\');      // returns false
-ratify.isUnixFilePath('\mnt/data');                     // returns true
-ratify.isUnixFilePath('/mnt/data/tmp');                 // returns true
+ratify.isUnixFilePath('\mnt\data');                     // returns true
+ratify.isUnixFilePath('/mnt/data/tmp');                 // returns false
+
+//
+// Check is string contains a valid file path i.e. wither unix file path or windows file path
+//
+ratify.isFilePath('C:\\BatmanSharedDevice\\');          // returns true
+ratify.isFilePath('\mnt\data');                         // returns true
+ratify.isFilePath('/mnt/data');                         // returns false
 
 ```
 

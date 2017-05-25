@@ -1552,6 +1552,28 @@ function isUnixFilePath(str) {
         return unixPath.test(str);
 }
 
+// ************************************************************************************************
+//
+// isFilePath
+//
+// Check if string contains a valid path(windows path or unix path)
+//
+// Argument(s):
+// str : It takes an string as argument that needs to be checked if it contains valid path(windows path or unix path)
+//
+// Examples:
+//     isFilePath('C:\\BatmanSharedDevice\\');       // returns true
+//     isFilePath('C:\BatmanSharedDevice');          // returns false
+//     isFilePath('/mnt/data/tmp');                  // returns true
+//
+// ************************************************************************************************
+function isFilePath(str) {
+    if (!isString(str))
+        return false;
+    else
+        return winPath.test(str) || unixPath.test(str);
+}
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1567,10 +1589,11 @@ exports = module.exports = {
     isBase64             : isBase64,
     isBlank              : isBlank,
     isBoolean            : isBoolean,
-    isEmpty              : isEmpty,
     isDate               : isDate,
+    isEmpty              : isEmpty,
     isError              : isError,
     isFalse              : isFalse,
+    isFilePath           : isFilePath,
     isFullWidth          : isFullWidth,
     isFunction           : isFunction,
     isHalfWidth          : isHalfWidth,
