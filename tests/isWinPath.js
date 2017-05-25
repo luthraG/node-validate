@@ -3,23 +3,23 @@ var isWinPath = require('../validate.js').isWinPath,
 
 describe('isWinPath API Tests', function () {
     describe('Valid tests for isWinPath API', function () {
-        it('C:\\BatmanSharedDevice', function () {
+        it('C:\\BatmanSharedDevice is a valid windows path', function () {
             expect(isWinPath('C:\\BatmanSharedDevice')).to.be.true;
         });
 
-        it('C:\\BatmanSharedDevice\\', function () {
+        it('C:\\BatmanSharedDevice\\ is valid windows path', function () {
             expect(isWinPath('C:\\BatmanSharedDevice\\')).to.be.true;
         });
 
-        it('C:\\BatmanSharedDevice\Images', function () {
+        it('C:\\BatmanSharedDevice\Images is a valid windows path', function () {
             expect(isWinPath('C:\\BatmanSharedDevice\Images')).to.be.true;
         });
 
-        it('m:\\helloworld\\', function () {
+        it('m:\\helloworld\\ is a valid windows path', function () {
             expect(isWinPath('m:\\helloworld\\')).to.be.true;
         });
 
-        it('m:\\hello   world\\', function () {
+        it('m:\\hello   world\\ is a valid windows path', function () {
             expect(isWinPath('m:\\hello   world\\')).to.be.true;
         });
     });

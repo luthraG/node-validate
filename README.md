@@ -89,6 +89,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isTitleCase(value)** - check is the string is title case i.e. first letter of each word in the string is capital case.
 - **isTrue(value)** - check if the value passed is true.
 - **isUndefined(value)** - check if value is a undefined or not.
+- **isUnixFilePath(value)** - check if value is valid unix file path.
 - **isUpperCase(str)** - check if a string is in uppercase.
 - **isURIEncoded(str)** - check if String is URI encoded.
 - **isUUID(str)** - check if the specified string is uuid(of specified version).
@@ -508,6 +509,13 @@ ratify.isLongitude('alpha.beta.gamma');  // returns false
 ratify.isWinPath('C:\\BatmanSharedDevice\\');       // returns true
 ratify.isWinPath('C:\BatmanSharedDevice');          // returns false
 ratify.isWinPath('/mnt/data/tmp');                  // returns false
+
+//
+// Check if string contains a valid unix path
+//
+ratify.isUnixFilePath('C:\\BatmanSharedDevice\\');      // returns false
+ratify.isUnixFilePath('\mnt/data');                     // returns true
+ratify.isUnixFilePath('/mnt/data/tmp');                 // returns true
 
 ```
 

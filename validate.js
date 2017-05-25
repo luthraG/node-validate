@@ -16,6 +16,7 @@ var          alpha  = /^[A-Z]+$/i,
                md5  = /^[A-Fa-f0-9]{32}$/,
     printableASCII  = /^[\x20-\x7E]+$/,
             semver  = /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$/,
+          unixPath  = /^((?:\/[a-zA-Z0-9\.\:]+(?:_[a-zA-Z0-9\:\.]+)*(?:\-[\:a-zA-Z0-9\.]+)*)+\/?)$/,
            winPath  = /^[a-zA-Z]:\\(?:[^\\/:*?"<>|\r\n]+\\)*[^\\/:*?"<>|\r\n]*$/;
 
 // https://en.wikipedia.org/wiki/Universally_unique_identifier#Definition
@@ -1529,6 +1530,28 @@ function isWinPath(str) {
         return winPath.test(str);
 }
 
+// ************************************************************************************************
+//
+// isUnixPath
+//
+// Check if string contains a valid unix path
+//
+// Argument(s):
+// str : It takes an string as argument that needs to be checked if it contains valid unix path
+//
+// Examples:
+//     isUnixPath('C:\\BatmanSharedDevice\\');       // returns false
+//     isUnixPath('C:\BatmanSharedDevice');          // returns false
+//     isUnixPath('/mnt/data/tmp');                  // returns true
+//
+// ************************************************************************************************
+function isUnixPath(str) {
+    if (!isString(str))
+        return false;
+    else
+        return unixPath.test(str);
+}
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1578,6 +1601,7 @@ exports = module.exports = {
     isTitleCase          : isTitleCase,
     isTrue               : isTrue,
     isUndefined          : isUndefined,
+    isUnixPath           : isUnixPath,
     isUpperCase          : isUpperCase,
     isURIEncoded         : isURIEncoded,
     isUUID               : isUUID,
