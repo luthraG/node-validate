@@ -14,6 +14,7 @@ var          alpha  = /^[A-Z]+$/i,
        macAddress1  = /^([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F])$/,
        macAddress2  = /^([0-9a-fA-F][0-9a-fA-F]-){5}([0-9a-fA-F][0-9a-fA-F])$/,
                md5  = /^[A-Fa-f0-9]{32}$/,
+         multiByte  = /[^\x00-\x7F]/,
     printableASCII  = /^[\x20-\x7E]+$/,
             semver  = /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$/,
           unixPath  = /^((?:\/[a-zA-Z0-9\.\:]+(?:_[a-zA-Z0-9\:\.]+)*(?:\-[\:a-zA-Z0-9\.]+)*)+\/?)$/,
@@ -1574,6 +1575,29 @@ function isFilePath(str) {
         return winPath.test(str) || unixPath.test(str);
 }
 
+
+// ************************************************************************************************
+//
+// isMultiByte
+//
+// Check if string contains one or more multibyte characters
+//
+// Argument(s):
+// str : It takes an string as argument that needs to be checked if it contains one or more multibyte chars.
+//
+// Examples:
+//     isMultiByte('節點');               // returns true
+//     isMultiByte('helloworld');        // returns false
+//     isMultiByte('こんにちは');         // returns true
+//
+// ************************************************************************************************
+function isMultiByte(str) {
+    if (!isString(str))
+        return false;
+    else
+        return multiByte.test(str);
+}
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1607,6 +1631,7 @@ exports = module.exports = {
     isMap                : isMap,
     isMD5                : isMD5,
     isMethodPresent      : isMethodPresent,
+    isMultiByte          : isMultiByte,
     isNull               : isNull,
     isNumber             : isNumber,
     isNumeric            : isNumeric,
