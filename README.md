@@ -96,6 +96,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isVariableWidth(str)** - check if the specified string contains both full width and half width characters.
 - **isWeakMap(value)** - check if the value is weakmap or not.
 - **isWeakSet(value)** - check if value is a weak set or not.
+- **isWinFilePath(value)** - check if value is valid window file path.
 - **isWhiteSpace(str)** - check if a string contains only whitespaces.
 - **objectEquals(obj1, obj2)** - check if two objects(String, Object, Number, Date, function, RegExp, Array) are equal or not.
 - **startsWith(str, starts, position, strict)** - check if a string/number/array starts with another string/number/array.<br />
@@ -500,6 +501,13 @@ ratify.isLatitude('alpha.beta.gamma');  // returns false
 ratify.isLongitude('+90');               // returns true
 ratify.isLongitude('+40.58517');         // returns true
 ratify.isLongitude('alpha.beta.gamma');  // returns false
+
+//
+// Check if string contains a valid windows path
+//
+ratify.isWinPath('C:\\BatmanSharedDevice\\');       // returns true
+ratify.isWinPath('C:\BatmanSharedDevice');          // returns false
+ratify.isWinPath('/mnt/data/tmp');                  // returns false
 
 ```
 

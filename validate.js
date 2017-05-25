@@ -15,7 +15,8 @@ var          alpha  = /^[A-Z]+$/i,
        macAddress2  = /^([0-9a-fA-F][0-9a-fA-F]-){5}([0-9a-fA-F][0-9a-fA-F])$/,
                md5  = /^[A-Fa-f0-9]{32}$/,
     printableASCII  = /^[\x20-\x7E]+$/,
-            semver  = /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$/;
+            semver  = /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$/,
+           winPath  = /^[a-zA-Z]:\\(?:[^\\/:*?"<>|\r\n]+\\)*[^\\/:*?"<>|\r\n]*$/;
 
 // https://en.wikipedia.org/wiki/Universally_unique_identifier#Definition
 var uuid = {
@@ -1506,6 +1507,28 @@ function isLongitude(str) {
         return longitude.test(str);
 }
 
+// ************************************************************************************************
+//
+// isWinPath
+//
+// Check if string contains a valid windows path
+//
+// Argument(s):
+// str : It takes an string as argument that needs to be checked if it contains valid windows path
+//
+// Examples:
+//     isWinPath('C:\\BatmanSharedDevice\\');       // returns true
+//     isWinPath('C:\BatmanSharedDevice');          // returns false
+//     isWinPath('/mnt/data/tmp');                  // returns false
+//
+// ************************************************************************************************
+function isWinPath(str) {
+    if (!isString(str))
+        return false;
+    else
+        return winPath.test(str);
+}
+
 exports = module.exports = {
     contains             : contains,
     containsDeepKey      : containsDeepKey,
@@ -1563,6 +1586,7 @@ exports = module.exports = {
     isWeakMap            : isWeakMap,
     isWeakSet            : isWeakSet,
     isWhiteSpace         : isWhiteSpace,
+    isWinPath            : isWinPath,
     objectEquals         : objectEquals,
     startsWith           : startsWith
 };
