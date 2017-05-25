@@ -506,9 +506,9 @@ ratify.isLongitude('alpha.beta.gamma');  // returns false
 //
 // Check if string contains a valid windows path
 //
-ratify.isWinPath('C:\\BatmanSharedDevice\\');       // returns true
-ratify.isWinPath('C:\BatmanSharedDevice');          // returns false
-ratify.isWinPath('/mnt/data/tmp');                  // returns false
+ratify.isWinFilePath('C:\\BatmanSharedDevice\\');       // returns true
+ratify.isWinFilePath('C:\BatmanSharedDevice');          // returns false
+ratify.isWinFilePath('/mnt/data/tmp');                  // returns false
 
 //
 // Check if string contains a valid unix path

@@ -1,4 +1,4 @@
-var isUnixPath  = require('../validate.js').isUnixPath,
+var isUnixPath  = require('../validate.js').isUnixFilePath,
     expect      = require('chai').expect;
 
 describe('isUnixPath API Tests', function () {

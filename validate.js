@@ -1510,7 +1510,7 @@ function isLongitude(str) {
 
 // ************************************************************************************************
 //
-// isWinPath
+// isWinFilePath
 //
 // Check if string contains a valid windows path
 //
@@ -1518,12 +1518,12 @@ function isLongitude(str) {
 // str : It takes an string as argument that needs to be checked if it contains valid windows path
 //
 // Examples:
-//     isWinPath('C:\\BatmanSharedDevice\\');       // returns true
-//     isWinPath('C:\BatmanSharedDevice');          // returns false
-//     isWinPath('/mnt/data/tmp');                  // returns false
+//     isWinFilePath('C:\\BatmanSharedDevice\\');       // returns true
+//     isWinFilePath('C:\BatmanSharedDevice');          // returns false
+//     isWinFilePath('/mnt/data/tmp');                  // returns false
 //
 // ************************************************************************************************
-function isWinPath(str) {
+function isWinFilePath(str) {
     if (!isString(str))
         return false;
     else
@@ -1532,7 +1532,7 @@ function isWinPath(str) {
 
 // ************************************************************************************************
 //
-// isUnixPath
+// isUnixFilePath
 //
 // Check if string contains a valid unix path
 //
@@ -1540,12 +1540,12 @@ function isWinPath(str) {
 // str : It takes an string as argument that needs to be checked if it contains valid unix path
 //
 // Examples:
-//     isUnixPath('C:\\BatmanSharedDevice\\');       // returns false
-//     isUnixPath('C:\BatmanSharedDevice');          // returns false
-//     isUnixPath('/mnt/data/tmp');                  // returns true
+//     isUnixFilePath('C:\\BatmanSharedDevice\\');       // returns false
+//     isUnixFilePath('C:\BatmanSharedDevice');          // returns false
+//     isUnixFilePath('/mnt/data/tmp');                  // returns true
 //
 // ************************************************************************************************
-function isUnixPath(str) {
+function isUnixFilePath(str) {
     if (!isString(str))
         return false;
     else
@@ -1601,7 +1601,7 @@ exports = module.exports = {
     isTitleCase          : isTitleCase,
     isTrue               : isTrue,
     isUndefined          : isUndefined,
-    isUnixPath           : isUnixPath,
+    isUnixFilePath       : isUnixFilePath,
     isUpperCase          : isUpperCase,
     isURIEncoded         : isURIEncoded,
     isUUID               : isUUID,
@@ -1610,7 +1610,7 @@ exports = module.exports = {
     isWeakMap            : isWeakMap,
     isWeakSet            : isWeakSet,
     isWhiteSpace         : isWhiteSpace,
-    isWinPath            : isWinPath,
+    isWinFilePath        : isWinFilePath,
     objectEquals         : objectEquals,
     startsWith           : startsWith
 };

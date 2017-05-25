@@ -1,4 +1,4 @@
-var isWinPath = require('../validate.js').isWinPath,
+var isWinPath = require('../validate.js').isWinFilePath,
     expect    = require('chai').expect;
 
 describe('isWinPath API Tests', function () {
