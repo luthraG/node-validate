@@ -9,6 +9,7 @@ var          alpha  = /^[A-Z]+$/i,
          halfWidth  = /[\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/,
          hexaColor  = /^#?([0-9A-F]{3}|[0-9A-F]{6})$/i,
        hexadecimal  = /^[0-9A-F]+$/i,
+           iso8601  = /^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$/,
           latitude  = /^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$/,
          longitude  = /^[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$/,
           japanese  = /[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/,
@@ -1747,6 +1748,28 @@ function isDataURI(value) {
         return dataURI.test(value);
 }
 
+// ************************************************************************************************
+//
+// isISO8601
+//
+// Check if string contains a valid iso8601 value
+//
+// Argument(s):
+// value : Value that needs to be checked if it contains valid iso8601
+//
+// Examples:
+//      isISO8601('2009-12T12:34');         // returns true
+//      isISO8601('2010-02-18T16:23,25');   // returns true
+//      isISO8601('2009-05-19T14a39r');    // returns false
+//
+// ************************************************************************************************
+function isISO8601(str) {
+    if (!isString(str))
+        return false;
+    else
+        return iso8601.test(str);
+}
+
 
 // ************************************************************************************************
 //
@@ -1799,6 +1822,7 @@ exports = module.exports = {
     isHexaColor          : isHexaColor,
     isHexadecimal        : isHexadecimal,
     isInRange            : isInRange,
+    isISO8601            : isISO8601,
     isJSON               : isJSON,
     isLatitude           : isLatitude,
     isLongitude          : isLongitude,
