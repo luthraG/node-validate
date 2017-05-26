@@ -65,6 +65,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isHalfWidth(str)** - check if the specified string contains any half width characters or not.
 - **isHexaColor(str)** - check if the specified string is valid hexadecimal color value or not.
 - **isHexadecimal(str)** - check if the string is a hexadecimal number.
+- **isInRange(value, left, right)** - check if string lies between two values i.e. left and right.
 - **isJSON(str)** - check if a string is a valid JSON string.
 - **isLatitude(str)** - check if the string contains valid latitude value.
 - **isLongitude(str)** - Check if the string contains valid longitude value.
@@ -532,6 +533,13 @@ ratify.isFilePath('/mnt/data');                         // returns false
 ratify.isMultiByte('節點');               // returns true
 ratify.isMultiByte('helloworld');        // returns false
 ratify.isMultiByte('こんにちは');         // returns true
+
+//
+// Check if string lies between two values i.e. left and right
+//
+ratify.isInRange('100', '10', '200');         // returns true
+ratify.isInRange('90.1', '-21', '22');        // returns false
+ratify.isInRange('Helloworld10', '10', '20'); // returns false
 
 ```
 
