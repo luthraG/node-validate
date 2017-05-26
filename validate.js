@@ -1398,10 +1398,10 @@ function isPrintableASCII(str) {
 //
 // isVariableWidth
 //
-// Check if string contains both full width and half width characters
+// Check if string is both full width and half width characters
 //
 // Argument(s):
-// str : It takes an string as argument that needs to be checked if it contains both half width and full width characters
+// str : It takes an string as argument that needs to be checked if it is both half width and full width characters
 //
 // Examples:
 //     isVariableWidth('ギヰヺタヰｬｴｳ');        // returns true
@@ -1417,10 +1417,10 @@ function isVariableWidth(str) {
 //
 // isPort
 //
-// Check if string contains a valid port number
+// Check if string is a valid port number
 //
 // Argument(s):
-// str : It takes an string as argument that needs to be checked if it contains valid port number
+// str : It takes an string as argument that needs to be checked if it is a valid port number
 //
 // Examples:
 //     isPort('0');        // returns false
@@ -1440,11 +1440,11 @@ function isPort(str) {
 //
 // isSemver
 //
-// Check if string contains a valid semantic versioning
+// Check if string is a valid semantic version
 // Check http://semver.org/ for more details
 //
 // Argument(s):
-// str : It takes an string as argument that needs to be checked if it contains valid semantic versioning
+// str : It takes an string as argument that needs to be checked if it follows valid semantic versioning
 //
 // Examples:
 //     isSemver('v1.0.0');              // returns true
@@ -1463,10 +1463,10 @@ function isSemver(str) {
 //
 // isLatitude
 //
-// Check if string contains a valid latitude value
+// Check if string is a valid latitude value
 //
 // Argument(s):
-// str : It takes an string as argument that needs to be checked if it contains valid latitude
+// str : It takes an string as argument that needs to be checked if it is a valid latitude
 //
 // Examples:
 //     isLatitude('+90');               // returns true
@@ -1485,10 +1485,10 @@ function isLatitude(str) {
 //
 // isLongitude
 //
-// Check if string contains a valid longitude value
+// Check if string is a valid longitude value
 //
 // Argument(s):
-// str : It takes an string as argument that needs to be checked if it contains valid longitude
+// str : It takes an string as argument that needs to be checked if it is a valid longitude
 //
 // Examples:
 //     isLongitude('+90');               // returns true
@@ -1507,10 +1507,10 @@ function isLongitude(str) {
 //
 // isWinFilePath
 //
-// Check if string contains a valid windows path
+// Check if string is a valid windows path
 //
 // Argument(s):
-// str : It takes an string as argument that needs to be checked if it contains valid windows path
+// str : It takes an string as argument that needs to be checked if it is a valid windows path
 //
 // Examples:
 //     isWinFilePath('C:\\BatmanSharedDevice\\');       // returns true
@@ -1529,10 +1529,10 @@ function isWinFilePath(str) {
 //
 // isUnixFilePath
 //
-// Check if string contains a valid unix path
+// Check if string is a valid unix path
 //
 // Argument(s):
-// str : It takes an string as argument that needs to be checked if it contains valid unix path
+// str : It takes an string as argument that needs to be checked if it is a valid unix path
 //
 // Examples:
 //     isUnixFilePath('C:\\BatmanSharedDevice\\');       // returns false
@@ -1551,10 +1551,10 @@ function isUnixFilePath(str) {
 //
 // isFilePath
 //
-// Check if string contains a valid path(windows path or unix path)
+// Check if string is a valid path(windows path or unix path)
 //
 // Argument(s):
-// str : It takes an string as argument that needs to be checked if it contains valid path(windows path or unix path)
+// str : It takes an string as argument that needs to be checked if it is a valid path(windows path or unix path)
 //
 // Examples:
 //     isFilePath('C:\\BatmanSharedDevice\\');       // returns true
@@ -1731,7 +1731,7 @@ function isNonNegative(value) {
 //
 // isDataURI
 //
-// Check if string contains a valid data URI
+// Check if string is a valid data URI
 //
 // Argument(s):
 // value : Value that needs to be checked if it contains valid data URI
@@ -1753,10 +1753,10 @@ function isDataURI(value) {
 //
 // isISO8601
 //
-// Check if string contains a valid iso8601 value
+// Check if string is a valid iso8601 value
 //
 // Argument(s):
-// value : Value that needs to be checked if it contains valid iso8601
+// value : Value that needs to be checked if it is a valid iso8601
 //
 // Examples:
 //      isISO8601('2009-12T12:34');         // returns true
@@ -1775,10 +1775,10 @@ function isISO8601(str) {
 //
 // isRGBColor
 //
-// Check if string contains a valid RGB color value
+// Check if string is a valid RGB color value
 //
 // Argument(s):
-// value : Value that needs to be checked if it contains valid RGB color value
+// value : Value that needs to be checked if it is valid RGB color value
 //
 // Examples:
 //      isRGBColor('rbg(255, 255, 255)');           // returns true

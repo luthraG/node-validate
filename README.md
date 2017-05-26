@@ -69,8 +69,8 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isInRange(value, left, right)** - check if string lies between two values i.e. left and right.
 - **isISO8601(str)** - check if string is a valid ISO8601 value.
 - **isJSON(str)** - check if a string is a valid JSON string.
-- **isLatitude(str)** - check if the string contains valid latitude value.
-- **isLongitude(str)** - Check if the string contains valid longitude value.
+- **isLatitude(str)** - check if the string is valid latitude value.
+- **isLongitude(str)** - Check if the string is valid longitude value.
 - **isLowerCase(str)** - check if a string is in lowercase.
 - **isMACAddress(str)** - check if the string value is a valid MAC address.
 - **isMap(value)** - check if the value is map or not.
@@ -85,7 +85,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isNumeric(str)** - check if a string is number(Integer/Floating point et al.).
 - **isObject(value)** - check if the value passed is Object.
 - **isPalindrome(str)** - check if input string is a palindrome or not.
-- **isPort(str)** - check if input string contains a valid port number or not.
+- **isPort(str)** - check if input string is a valid port number or not.
 - **isPositive(str)** - check if input value if positive value or not.
 - **isPrintableASCII(str)** - check if all the characters of input string are printable ASCII characters or not.
 - **isRegExp(value)** - check if the value is RegExp or not.
@@ -479,35 +479,35 @@ ratify.isPrintableASCII('Helloworld');   // returns true
 ratify.isPrintableASCII('\n\t\t');      // returns false
 
 //
-// Check if string contains both half width and full width characters
+// Check if string is both half width and full width characters
 //
 ratify.isVariableWidth('ギヰヺタヰｬｴｳ');        // returns true
 ratify.isVariableWidth('ポヲルダマ');          // returns false
 ratify.isVariableWidth('ｱﾃﾞﾁｬｴｳｨｵﾌﾟ');          // returns false
 
 //
-// Check if string contains a valid port number
+// Check if string is a valid port number
 //
 ratify.isPort('0');        // returns false
 ratify.isPort('8000');     // returns true
 ratify.isPort('-421');     // returns false
 
 //
-// Check if string contains a value that follows semantics versioning rule
+// Check if string is a value that follows semantics versioning rule
 //
 ratify.isSemver('v1.0.0');              // returns true
 ratify.isSemver('1.0.0-alpha.1');       // returns true
 ratify.isSemver('alpha.beta.gamma');    // returns false
 
 //
-// Check if the string contains valid latitude value
+// Check if the string is a valid latitude value
 //
 ratify.isLatitude('+90');               // returns true
 ratify.isLatitude('+40.58517');         // returns true
 ratify.isLatitude('alpha.beta.gamma');  // returns false
 
 //
-// Check if the string contains valid longitude value
+// Check if the string is a valid longitude value
 //
 ratify.isLongitude('+90');               // returns true
 ratify.isLongitude('+40.58517');         // returns true
