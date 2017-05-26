@@ -514,21 +514,21 @@ ratify.isLongitude('+40.58517');         // returns true
 ratify.isLongitude('alpha.beta.gamma');  // returns false
 
 //
-// Check if string contains a valid windows path
+// Check if string is a valid windows path
 //
 ratify.isWinFilePath('C:\\BatmanSharedDevice\\');       // returns true
 ratify.isWinFilePath('C:\BatmanSharedDevice');          // returns false
 ratify.isWinFilePath('/mnt/data/tmp');                  // returns false
 
 //
-// Check if string contains a valid unix path
+// Check if string is a valid unix path
 //
 ratify.isUnixFilePath('C:\\BatmanSharedDevice\\');      // returns false
 ratify.isUnixFilePath('\mnt\data');                     // returns true
 ratify.isUnixFilePath('/mnt/data/tmp');                 // returns false
 
 //
-// Check is string contains a valid file path i.e. wither unix file path or windows file path
+// Check is string is a valid file path i.e. wither unix file path or windows file path
 //
 ratify.isFilePath('C:\\BatmanSharedDevice\\');          // returns true
 ratify.isFilePath('\mnt\data');                         // returns true
