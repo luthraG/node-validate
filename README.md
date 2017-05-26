@@ -586,7 +586,7 @@ ratify.isDataURI('data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D');    // retur
 ratify.isDataURI('');                                                   // returns false
 
 //
-// Check if value contains a valid iso8601 string
+// Check if value is a valid iso8601 string
 //
 ratify.isISO8601('2009-12T12:34');           // returns true
 ratify.isISO8601('2010-02-18T16:23,25');     // returns true
