@@ -22,6 +22,10 @@ describe('containsJapanese API Tests', function () {
         it('ノード批准 contains japanese characters', function () {
             expect(containsJapanese('ノード批准')).to.be.true;
         });
+
+        it('hello ノード批准 contains japanese characters', function () {
+            expect(containsJapanese('hello ノード批准')).to.be.true;
+        });
     });
 
     describe('Invalid tests for containsJapanese API', function () {
