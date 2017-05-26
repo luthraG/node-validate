@@ -67,6 +67,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isHexaColor(str)** - check if the specified string is valid hexadecimal color value or not.
 - **isHexadecimal(str)** - check if the string is a hexadecimal number.
 - **isInRange(value, left, right)** - check if string lies between two values i.e. left and right.
+- **isISO8601(str)** - check if string is a valid ISO8601 value.
 - **isJSON(str)** - check if a string is a valid JSON string.
 - **isLatitude(str)** - check if the string contains valid latitude value.
 - **isLongitude(str)** - Check if the string contains valid longitude value.
@@ -582,6 +583,13 @@ ratify.isNonNegative('0');              // returns true
 ratify.isDataURI('data:,Hello%2C%20World!');                            // returns true
 ratify.isDataURI('data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D');    // returns true
 ratify.isDataURI('');                                                   // returns false
+
+//
+// Check if value contains a valid iso8601 string
+//
+ratify.isISO8601('2009-12T12:34');           // returns true
+ratify.isISO8601('2010-02-18T16:23,25');     // returns true
+ratify.isISO8601('2009-05-19T14a39r');       // returns false
 
 ```
 
