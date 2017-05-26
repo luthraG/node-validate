@@ -1618,6 +1618,32 @@ function isInRange(value, left, right) {
         return (value >= left && value <= right);
 }
 
+// ************************************************************************************************
+//
+// isPositive
+//
+// Check if value being passed is positive value
+//
+// Argument(s):
+// value : Value that needs to be checked if it is positive
+//
+// Examples:
+//     isPositive('100.21');         // returns true
+//     isPositive('90.1');          // returns true
+//     isPositive('-90.1');         // returns false
+//     isPositive('Helloworld10');  // returns false
+//
+// ************************************************************************************************
+function isPositive(value) {
+    value = filterFloat(value);
+
+    // if value is NAN then return false
+    if (isNaN(value))
+        return false;
+    else
+        return (value > 0);
+}
+
 
 // ************************************************************************************************
 //
@@ -1682,8 +1708,9 @@ exports = module.exports = {
     isNumber             : isNumber,
     isNumeric            : isNumeric,
     isObject             : isObject,
-    isPort               : isPort,
     isPalindrome         : isPalindrome,
+    isPort               : isPort,
+    isPositive           : isPositive,
     isPrintableASCII     : isPrintableASCII,
     isRegExp             : isRegExp,
     isSemver             : isSemver,
