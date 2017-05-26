@@ -22,6 +22,10 @@ describe('isUnixPath API Tests', function () {
         it('/mnt/data/tmp_tmp_again/ is a valid unix path', function () {
             expect(isUnixPath('/mnt/data/tmp_tmp_again/')).to.be.true;
         });
+
+         it('My files are save at /home/batman/workspace/ is not a valid unix path', function () {
+            expect(isUnixPath('My files are save at /home/batman/workspace/')).to.be.false;
+        });
     });
 
     describe('Invalid tests for isUnixPath API', function () {
