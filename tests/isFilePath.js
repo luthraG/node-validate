@@ -3,23 +3,23 @@ var isFilePath  = require('../validate.js').isFilePath,
 
 describe('isFilePath API Tests', function () {
     describe('Valid tests for isFilePath API', function () {
-        it('/mnt/data/tmp/ is a valid unix path', function () {
+        it('/mnt/data/tmp/ is a valid file path', function () {
             expect(isFilePath('/mnt/data/tmp/')).to.be.true;
         });
 
-        it('/home/batman/workspace/ is a valid unix path', function () {
+        it('/home/batman/workspace/ is a valid file path', function () {
             expect(isFilePath('/home/batman/workspace/')).to.be.true;
         });
 
-        it('/HOME/BATMAN/WORKSPACE/ is a valid unix path', function () {
+        it('/HOME/BATMAN/WORKSPACE/ is a valid file path', function () {
             expect(isFilePath('/HOME/BATMAN/WORKSPACE/')).to.be.true;
         });
 
-        it('/j7Dw4KrDhEr8fYdggz0FoKNYK2iTYDgH1QcpzqJmeLw7LZA0Cv.C is a valid unix path', function () {
+        it('/j7Dw4KrDhEr8fYdggz0FoKNYK2iTYDgH1QcpzqJmeLw7LZA0Cv.C is a valid file path', function () {
             expect(isFilePath('/j7Dw4KrDhEr8fYdggz0FoKNYK2iTYDgH1QcpzqJmeLw7LZA0Cv.C')).to.be.true;
         });
 
-        it('/mnt/data/tmp_tmp_again/ is a valid unix path', function () {
+        it('/mnt/data/tmp_tmp_again/ is a valid file path', function () {
             expect(isFilePath('/mnt/data/tmp_tmp_again/')).to.be.true;
         });
 
@@ -29,6 +29,14 @@ describe('isFilePath API Tests', function () {
 
         it('C:\\BatmanSharedDevice\Images is a valid file path', function () {
             expect(isFilePath('C:\\BatmanSharedDevice\Images')).to.be.true;
+        });
+
+        it('My files are save at /home/batman/workspace/ is not a valid file path', function () {
+            expect(isFilePath('My files are save at /home/batman/workspace/')).to.be.false;
+        });
+
+        it('Images can be checked at C:\\BatmanSharedDevice\Images is not a valid file path', function () {
+            expect(isFilePath('Images can be checked at  C:\\BatmanSharedDevice\Images')).to.be.false;
         });
     });
 
@@ -45,7 +53,7 @@ describe('isFilePath API Tests', function () {
             expect(isFilePath('')).to.be.false;
         });
 
-        it('C:\BatmanSharedDevice\Images is not a file unix path', function () {
+        it('C:\BatmanSharedDevice\Images is not a file path', function () {
             expect(isFilePath('C:\BatmanSharedDevice\Images')).to.be.false;
         });
     });
