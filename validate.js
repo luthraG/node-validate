@@ -1670,6 +1670,33 @@ function isNegative(value) {
         return (value < 0);
 }
 
+// ************************************************************************************************
+//
+// isNonPositive
+//
+// Check if value being passed is non positive value
+//
+// Argument(s):
+// value : Value that needs to be checked if it is non positive
+//
+// Examples:
+//     isNonPositive('100.21');         // returns false
+//     isNonPositive('90.1');          // returns false
+//     isNonPositive('-90.1');         // returns true
+//     isNonPositive('0');              // returns true
+//     isNonPositive('Helloworld10');  // returns false
+//
+// ************************************************************************************************
+function isNonPositive(value) {
+    value = filterFloat(value);
+
+    // if value is NAN then return false
+    if (isNaN(value))
+        return false;
+    else
+        return (value <= 0);
+}
+
 
 // ************************************************************************************************
 //
@@ -1731,6 +1758,7 @@ exports = module.exports = {
     isMethodPresent      : isMethodPresent,
     isMultiByte          : isMultiByte,
     isNegative           : isNegative,
+    isNonPositive        : isNonPositive,
     isNull               : isNull,
     isNumber             : isNumber,
     isNumeric            : isNumeric,
