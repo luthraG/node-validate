@@ -18,6 +18,7 @@ var          alpha  = /^[A-Z]+$/i,
                md5  = /^[A-Fa-f0-9]{32}$/,
          multiByte  = /[^\x00-\x7F]/,
     printableASCII  = /^[\x20-\x7E]+$/,
+          rgbColor  = /^rgb\(\s*(0|[1-9]\d?|1\d\d?|2[0-4]\d|25[0-5])\s*,\s*(0|[1-9]\d?|1\d\d?|2[0-4]\d|25[0-5])\s*,\s*(0|[1-9]\d?|1\d\d?|2[0-4]\d|25[0-5])\s*\)$/,
             semver  = /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$/,
           unixPath  = /^((?:\/[a-zA-Z0-9\.\:]+(?:_[a-zA-Z0-9\:\.]+)*(?:\-[\:a-zA-Z0-9\.]+)*)+\/?)$/,
            winPath  = /^[a-zA-Z]:\\(?:[^\\/:*?"<>|\r\n]+\\)*[^\\/:*?"<>|\r\n]*$/;
@@ -1770,6 +1771,28 @@ function isISO8601(str) {
         return iso8601.test(str);
 }
 
+// ************************************************************************************************
+//
+// isRGBColor
+//
+// Check if string contains a valid RGB color value
+//
+// Argument(s):
+// value : Value that needs to be checked if it contains valid RGB color value
+//
+// Examples:
+//      isRGBColor('rbg(255, 255, 255)');           // returns true
+//      isRGBColor('rbg(255, 255, 0)');             // returns true
+//      isRGBColor('hello rbg(255, 255, 255)');     // returns false
+//
+// ************************************************************************************************
+function isRGBColor(str) {
+    if (!isString(str))
+        return false;
+    else
+        return rgbColor.test(str);
+}
+
 
 // ************************************************************************************************
 //
@@ -1844,6 +1867,7 @@ exports = module.exports = {
     isPositive           : isPositive,
     isPrintableASCII     : isPrintableASCII,
     isRegExp             : isRegExp,
+    isRGBColor           : isRGBColor,
     isSemver             : isSemver,
     isSet                : isSet,
     isStrictObject       : isStrictObject,
