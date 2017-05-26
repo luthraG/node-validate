@@ -76,6 +76,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isMethodPresent(obj, methodName)** - check if the object has the specified method present inside it.
 - **isMultiByte(str)** - check if string contains one or more multibyte characters.
 - **isNegative(value)** - check if input value if negative value or not.
+- **isNonNegative(value)** - check if input value if a non negative value or not.
 - **isNonPositive(value)** - check if input value if a non positive value or not.
 - **isNull(value)** - check if the value is null or undefined or NaN.
 - **isNumber(value)** - check if the value passed is Number object.
@@ -566,6 +567,13 @@ ratify.isNegative('Helloworld10');  // returns false
 ratify.isNonPositive('100.21');         // returns false
 ratify.isNonPositive('-90.1');         // returns true
 ratify.isNonPositive('0');              // returns true
+
+//
+// Check if value being passed is non negative value.
+//
+ratify.isNonNegative('100.21');         // returns true
+ratify.isNonNegative('-90.1');         // returns false
+ratify.isNonNegative('0');              // returns true
 
 ```
 
