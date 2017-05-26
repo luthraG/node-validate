@@ -89,6 +89,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isPositive(str)** - check if input value if positive value or not.
 - **isPrintableASCII(str)** - check if all the characters of input string are printable ASCII characters or not.
 - **isRegExp(value)** - check if the value is RegExp or not.
+- **isRGBColor(str)** - check if string is a valid rgb value.
 - **isSemver(str)** - check if specified string contains a value that follows semantics versioning rule.
 - **isSet(value)** - check if the specified object is set or not
 - **isStrictBoolean(value)** - check if the value is boolean object or not.
@@ -590,6 +591,13 @@ ratify.isDataURI('');                                                   // retur
 ratify.isISO8601('2009-12T12:34');           // returns true
 ratify.isISO8601('2010-02-18T16:23,25');     // returns true
 ratify.isISO8601('2009-05-19T14a39r');       // returns false
+
+//
+// Check if value is valid RGB color value
+//
+ratify.isRGBColor('rbg(255, 255, 255)');           // returns true
+ratify.isRGBColor('rbg(255, 255, 0)');             // returns true
+ratify.isRGBColor('hello rbg(255, 255, 255)');     // returns false
 
 ```
 
