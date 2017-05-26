@@ -55,7 +55,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isBase64(str)** - check if a string is base64 encoded.
 - **isBlank(str)** - check if a string is blank.
 - **isBoolean(str)** - check if the value is boolean value i.e. true, false, 1, or 0.
-- **isDataURI(value)** - check if value contains a valid data URI or not.
+- **isDataURI(value)** - check if value is a valid data URI or not.
 - **isDate(value)** - check if the value is date object or not.
 - **isEmpty(str)** - check if a string is empty. A string containing only whitespaces is blank string but not empty string.
 - **isError(value)** - check if value is an error object or not
@@ -579,7 +579,7 @@ ratify.isNonNegative('-90.1');         // returns false
 ratify.isNonNegative('0');              // returns true
 
 //
-// Check if value contains a valid data URI
+// Check if value is a valid data URI
 //
 ratify.isDataURI('data:,Hello%2C%20World!');                            // returns true
 ratify.isDataURI('data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D');    // returns true
