@@ -81,6 +81,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isObject(value)** - check if the value passed is Object.
 - **isPalindrome(str)** - check if input string is a palindrome or not.
 - **isPort(str)** - check if input string contains a valid port number or not.
+- **isPositive(str)** - check if input value if positive value or not.
 - **isPrintableASCII(str)** - check if all the characters of input string are printable ASCII characters or not.
 - **isRegExp(value)** - check if the value is RegExp or not.
 - **isSemver(str)** - check if specified string contains a value that follows semantics versioning rule.
@@ -540,6 +541,14 @@ ratify.isMultiByte('こんにちは');         // returns true
 ratify.isInRange('100', '10', '200');         // returns true
 ratify.isInRange('90.1', '-21', '22');        // returns false
 ratify.isInRange('Helloworld10', '10', '20'); // returns false
+
+//
+// Check if the value being passed is positive value
+//
+ratify.isPositive('100.21');         // returns true
+ratify.isPositive('90.1');          // returns true
+ratify.isPositive('-90.1');         // returns false
+ratify.isPositive('Helloworld10');  // returns false
 
 ```
 
