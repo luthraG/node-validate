@@ -1410,15 +1410,6 @@ function isVariableWidth(str) {
     return (isHalfWidth(str) && isFullWidth(str));
 }
 
-//
-// Helper method to filter integer value
-//
-function filterInt(value) {
-  if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value))
-    return Number(value);
-  return NaN;
-}
-
 // ************************************************************************************************
 //
 // isPort
@@ -1575,7 +1566,6 @@ function isFilePath(str) {
         return winPath.test(str) || unixPath.test(str);
 }
 
-
 // ************************************************************************************************
 //
 // isMultiByte
@@ -1596,6 +1586,61 @@ function isMultiByte(str) {
         return false;
     else
         return multiByte.test(str);
+}
+
+// ************************************************************************************************
+//
+// isInRange
+//
+// Check if string lies between two values i.e. left and right
+//
+// Argument(s):
+// value, left, right : It takes three arguments i.e.
+// value - number that needs to be checked to be within range
+// left - lower bound of range
+// right - upper bound of range
+//
+// Examples:
+//     isInRange('100', '10', '200');         // returns true
+//     isInRange('90.1', '-21', '22');        // returns false
+//     isInRange('Helloworld10', '10', '20'); // returns false
+//
+// ************************************************************************************************
+function isInRange(value, left, right) {
+    value = filterFloat(value);
+    left  = filterFloat(left);
+    right = filterFloat(right);
+
+    // if any of the value is NAN then return false
+    if (isNaN(value) || isNaN(left) || isNaN(right))
+        return false;
+    else
+        return (value >= left && value <= right);
+}
+
+
+// ************************************************************************************************
+//
+// Helper Methods
+//
+// ************************************************************************************************
+
+//
+// Helper method to filter integer value
+//
+function filterInt(value) {
+    if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value))
+        return Number(value);
+    return NaN;
+}
+
+//
+// Helper method to filter float value
+//
+var filterFloat = function(value) {
+    if (/^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/.test(value))
+      return Number(value);
+    return NaN;
 }
 
 exports = module.exports = {
@@ -1623,6 +1668,7 @@ exports = module.exports = {
     isHalfWidth          : isHalfWidth,
     isHexaColor          : isHexaColor,
     isHexadecimal        : isHexadecimal,
+    isInRange            : isInRange,
     isJSON               : isJSON,
     isLatitude           : isLatitude,
     isLongitude          : isLongitude,
