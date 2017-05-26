@@ -22,6 +22,10 @@ describe('isWinPath API Tests', function () {
         it('m:\\hello   world\\ is a valid windows path', function () {
             expect(isWinPath('m:\\hello   world\\')).to.be.true;
         });
+
+        it('Images can be checked at C:\\BatmanSharedDevice\Images is not a valid file path', function () {
+            expect(isWinPath('Images can be checked at  C:\\BatmanSharedDevice\Images')).to.be.false;
+        });
     });
 
     describe('Invalid tests for isWinPath API', function () {
