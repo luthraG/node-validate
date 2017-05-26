@@ -30,6 +30,10 @@ describe('isMultiByte API Tests', function () {
         it('節點批准 is a multi byte string', function () {
             expect(isMultiByte('節點批准')).to.be.true;
         });
+
+        it('hello節world contains a multi byte character', function () {
+            expect(isMultiByte('hello節world')).to.be.true;
+        });
     });
 
     describe('Invalid tests for isMultiByte API', function () {
