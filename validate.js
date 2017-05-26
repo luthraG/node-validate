@@ -3,6 +3,7 @@ var          alpha  = /^[A-Z]+$/i,
       alphanumeric  = /^[0-9A-Z]+$/i,
              ascii  = /^[\x00-\x7F]+$/,
             base64  = /^([A-Za-z0-9+\/]{4})*([A-Za-z0-9+\/]{4}|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{2}==)$/i,
+           dataURI  = /^\s*data:([a-z]+\/[a-z0-9\-\+]+(;[a-z\-]+=[a-z0-9\-]+)?)?(;base64)?,[a-z0-9!\$&',\(\)\*\+,;=\-\._~:@\/\?%\s]*\s*$/i,
              email  = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
          fullWidth  = /[^\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/,
          halfWidth  = /[\u0020-\u007E\uFF61-\uFF9F\uFFA0-\uFFDC\uFFE8-\uFFEE0-9a-zA-Z]/,
@@ -1724,6 +1725,28 @@ function isNonNegative(value) {
         return (value >= 0);
 }
 
+// ************************************************************************************************
+//
+// isDataURI
+//
+// Check if string contains a valid data URI
+//
+// Argument(s):
+// value : Value that needs to be checked if it contains valid data URI
+//
+// Examples:
+//      isDataURI('data:,Hello%2C%20World!');                            // returns true
+//      isDataURI('data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D');    // returns true
+//      isDataURI('');                                                   // returns false
+//
+// ************************************************************************************************
+function isDataURI(value) {
+    if (!isString(value))
+        return false;
+    else
+        return dataURI.test(value);
+}
+
 
 // ************************************************************************************************
 //
@@ -1764,6 +1787,7 @@ exports = module.exports = {
     isBase64             : isBase64,
     isBlank              : isBlank,
     isBoolean            : isBoolean,
+    isDataURI            : isDataURI,
     isDate               : isDate,
     isEmpty              : isEmpty,
     isError              : isError,
