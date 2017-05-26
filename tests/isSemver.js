@@ -30,6 +30,10 @@ describe('isSemver API Tests', function () {
         it('1.0.0-beta+exp.sha.5114f85 is a valid semantic version number', function () {
             expect(isSemver('1.0.0-beta+exp.sha.5114f85')).to.be.true;
         });
+
+        it('This is v1.0.0 verion contains a valid semantic version number', function () {
+            expect(isSemver('This is v1.0.0 verion')).to.be.false;
+        });
     });
 
     describe('Invalid tests for isSemver API', function () {
