@@ -54,19 +54,19 @@ describe('isISO8601 API Tests', function () {
             expect(isISO8601(date.toString())).to.be.false;
         });
 
-        it('null does not contain a valid iso8601 value', function () {
+        it('null is not a valid iso8601 value', function () {
             expect(isISO8601(null)).to.be.false;
         });
 
-        it('Empty string does not contain a valid iso8601 value', function () {
+        it('Empty string is not a valid iso8601 value', function () {
             expect(isISO8601('')).to.be.false;
         });
 
-        it('undefined does not contain a valid iso8601 value', function () {
+        it('undefined is not a valid iso8601 value', function () {
             expect(isISO8601(undefined)).to.be.false;
         });
 
-        it('#HelloWorld does not contain a valid iso8601 value', function () {
+        it('#HelloWorld is not a valid iso8601 value', function () {
             expect(isISO8601('#HelloWorld')).to.be.false;
         });
 
