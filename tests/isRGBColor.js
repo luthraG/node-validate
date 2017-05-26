@@ -19,6 +19,10 @@ describe('isRGBColor API Tests', function () {
             expect(isRGBColor('rgb(0, 0, 0)')).to.be.true;
         });
 
+        it('RGB(0, 0, 0) is not a valid rgbColor value', function () {
+            expect(isRGBColor('RGB(0, 0, 0)')).to.be.false;
+        });
+
         it('hello 16 rgb(255, 255, 255) is not a valid rgbColor value', function () {
             expect(isRGBColor('hello 16 rgb(255, 255, 255)')).to.be.false;
         });        
