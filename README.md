@@ -90,7 +90,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isPrintableASCII(str)** - check if all the characters of input string are printable ASCII characters or not.
 - **isRegExp(value)** - check if the value is RegExp or not.
 - **isRGBColor(str)** - check if string is a valid rgb value.
-- **isSemver(str)** - check if specified string contains a value that follows semantics versioning rule.
+- **isSemver(str)** - check if specified string is valid semver as per semantics versioning rule.
 - **isSet(value)** - check if the specified object is set or not
 - **isStrictBoolean(value)** - check if the value is boolean object or not.
 - **isStrictObject(value)** - check if the value is Object or not.
