@@ -15,7 +15,7 @@ describe('isNumber API Tests', function () {
             expect(isNumber(Infinity)).to.be.true;
         });
 
-        it('Date.now() returns not a valid number', function () {
+        it('Date.now() returns a valid number', function () {
             expect(isNumber(Date.now())).to.be.true;
         });
 
