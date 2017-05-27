@@ -506,14 +506,13 @@ function isNull (value) {
 //
 // ************************************************************************************************
 function isValidEmail (str) {
-    if (!isString(str))
+    if (!isString(str) || (isString(str) && str.length === 0) )
         return false;
 
     // http://www.rfc-editor.org/errata_search.php?rfc=3696&eid=1690
     // http://stackoverflow.com/questions/386294/what-is-the-maximum-length-of-a-valid-email-address
     if (str.length > 254)
         return false;
-
 
     // http://stackoverflow.com/questions/46155/validate-email-address-in-javascript/46181#46181
     var valid = email.test(str);
@@ -525,7 +524,7 @@ function isValidEmail (str) {
     if(emailParts[0].length > 64)
         return false;
 
-    var domainParts = parts[1].split(".");
+    var domainParts = emailParts[1].split(".");
 
     // None of the domain part should be greater than 63 characters
     if(domainParts.some(function(part) {
