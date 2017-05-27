@@ -101,7 +101,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isUndefined(value)** - check if value is a undefined or not.
 - **isUnixFilePath(value)** - check if value is valid unix file path.
 - **isUpperCase(str)** - check if a string is in uppercase.
-- **isURIEncoded(str)** - check if String is URI encoded.
+- **isURIEncoded(str)** - check if multi word string is URI encoded.
 - **isUUID(str)** - check if the specified string is uuid(of specified version).
 - **isValidEmail(str)** - check if the string is a valid email address.
 - **isVariableWidth(str)** - check if the specified string contains both full width and half width characters.
