@@ -567,7 +567,7 @@ function isUUID (str, version) {
 //
 // isURIEncoded
 //
-// Check if String is URI encoded
+// Check if a multi word string is URI encoded
 //
 // Argument(s):
 // 1. str : input string to be checked if it has been URI encoded
@@ -584,7 +584,7 @@ function isURIEncoded (str) {
 
     var decoded = decodeURI(str);
 
-    if (decoded == str)
+    if (decoded === str)
         return false;
 
     return true;
