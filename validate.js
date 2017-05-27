@@ -454,7 +454,6 @@ function isHexadecimal(str) {
 //
 // Examples :
 //      isAscii(' ') // returns false
-//      isAscii(' ') // returns true
 //      isAscii(null) // returns false
 //      isAscii(undefined) // returns false
 //      isAscii('{}') // returns true
