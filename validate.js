@@ -65,7 +65,7 @@ function isString (value) {
 //
 // ************************************************************************************************
 function isNumber (value) {
-    return (Object.prototype.toString.call(value) === '[object Number]');
+    return (Object.prototype.toString.call(value) === '[object Number]') && !isNaN(value);
 }
 
 // ************************************************************************************************
