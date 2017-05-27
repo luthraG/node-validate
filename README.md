@@ -1,6 +1,6 @@
 # node-ratify
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-url]][coveralls-image]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
 A library of string, array and javascript object validators.
 
