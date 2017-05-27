@@ -70,7 +70,7 @@ $ git clone https://github.com/luthraG/node-validate.git
 - **isISO8601(str)** - check if string is a valid ISO8601 value.
 - **isJSON(str)** - check if a string is a valid JSON string.
 - **isLatitude(str)** - check if the string is valid latitude value.
-- **isLongitude(str)** - Check if the string is valid longitude value.
+- **isLongitude(str)** - check if the string is valid longitude value.
 - **isLowerCase(str)** - check if a string is in lowercase.
 - **isMACAddress(str)** - check if the string value is a valid MAC address.
 - **isMap(value)** - check if the value is map or not.
