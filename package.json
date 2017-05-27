@@ -47,8 +47,8 @@
     },
     "scripts"           : {
         "minify"        : "uglifyjs validate.js -o validate.min.js  --compress --mangle --comments '/Copyright/'",
-        "test"          : "mocha --reporter spec",
-        "coveralls"     : "istanbul cover _mocha --report lcovonly -x validate.js -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+        "test"          : "./node_modules/mocha/bin/mocha --reporter spec",
+        "coveralls"     : "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
     },
     "license"           : "MIT"
 }
