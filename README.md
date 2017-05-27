@@ -1,6 +1,6 @@
 # node-ratify
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-url]][coveralls-image]
 
 A library of string, array and javascript object validators.
 
@@ -633,3 +633,6 @@ SOFTWARE.
 
 [travis-url]: https://travis-ci.org/luthraG/node-validate
 [travis-image]: http://img.shields.io/travis/luthraG/node-validate.svg
+
+[coveralls-url]: https://coveralls.io/github/luthraG/node-validate
+[coveralls-image]: https://coveralls.io/repos/github/luthraG/node-validate/badge.svg

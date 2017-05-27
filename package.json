@@ -1,6 +1,6 @@
 {
     "name"              : "node-ratify",
-    "version"           : "1.1.20",
+    "version"           : "1.1.21",
     "description"       : "A rich and efficient node validation library for String, Number, Date and Javascript Objects",
     "main"              : "./validate.js",
     "keywords"          : [
@@ -29,6 +29,8 @@
     ],
     "devDependencies"   : {
         "chai"          : "^3.5.0",
+        "coveralls"     : "^2.13.1",
+        "istanbul"      : "^0.4.5",
         "mocha"         : "^3.4.1",
         "uglify-js"     : "^3.0.10"
     },
@@ -45,7 +47,8 @@
     },
     "scripts"           : {
         "minify"        : "uglifyjs validate.js -o validate.min.js  --compress --mangle --comments '/Copyright/'",
-        "test"          : "mocha --reporter spec ./tests/*.js"
+        "test"          : "./node_modules/mocha/bin/mocha --reporter spec ./tests/*.js",
+        "coveralls"     : "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -x validate.js -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
     },
     "license"           : "MIT"
 }
