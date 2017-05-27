@@ -30,27 +30,27 @@ describe('isNumber API Tests', function () {
         it('new Number(-41) returns a valid number', function () {
             expect(isNumber(new Number(-41))).to.be.true;
         });
+
+        it('0/0 is a valid number', function () {
+            expect(isNumber(0/0)).to.be.true;
+        });
+
+        it('Infinity / Infinity is a valid number', function () {
+            expect(isNumber((Infinity / Infinity))).to.be.true;
+        });
+
+        it('Infinity + (-Infinity) is a valid number', function () {
+            expect(isNumber((Infinity + (-Infinity)))).to.be.true;
+        });
+
+        it('0 * (-Infinity) is a valid number', function () {
+            expect(isNumber((0 * (-Infinity)))).to.be.true;
+        });
     });
 
     describe('Invalid tests for isNumber API', function () {
         it('new Object() is not a valid number', function () {
             expect(isNumber(new Object())).to.be.false;
-        });
-
-        it('0/0 is not a valid number', function () {
-            expect(isNumber(0/0)).to.be.false;
-        });
-
-        it('Infinity / Infinity is not a valid number', function () {
-            expect(isNumber((Infinity / Infinity))).to.be.false;
-        });
-
-        it('Infinity + (-Infinity) is not a valid number', function () {
-            expect(isNumber((Infinity + (-Infinity)))).to.be.false;
-        });
-
-        it('0 * (-Infinity) is not a valid number', function () {
-            expect(isNumber((0 * (-Infinity)))).to.be.false;
         });
     });
 });
