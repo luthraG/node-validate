@@ -35,7 +35,7 @@ describe('isPalindrome API Tests', function () {
             expect(isPalindrome('abc')).to.be.false;
         });
 
-        it('123', function () {
+        it('123 is not a plaindrome', function () {
             expect(isPalindrome(123)).to.be.false;
         });
 
