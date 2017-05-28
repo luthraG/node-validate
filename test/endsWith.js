@@ -100,6 +100,10 @@ describe('Ends With API Tests', function () {
         it('[1, 2, 3, 4] ends with \"4\" with stict mode set to false', function () {
             expect(endsWith([1, 2, 3, 4], '4', false)).to.be.true;
         });
+
+        it('hello ends with ["hello"]', function () {
+            expect(endsWith("hello", ["hello"])).to.be.true;
+        });
     });
 
     describe('Invalid tests for ends with API for Array inputs', function () {
