@@ -49,5 +49,13 @@ describe('isError API Tests', function () {
         it('JSON object is not an error', function () {
             expect(isError({x : 0, y : 0})).to.be.false;
         });
+
+        it('null is not an error', function () {
+            expect(isError(null)).to.be.false;
+        });
+
+        it('String #helloworld is not an error', function () {
+            expect(isError('#helloworld')).to.be.false;
+        });
     });
 });
