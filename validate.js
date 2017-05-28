@@ -839,10 +839,13 @@ function objectEquals(x, y) {
     if (x.constructor !== y.constructor) 
         return false;
 
-    if ((typeof x === 'function' && typeof y === 'function') ||
-       (x instanceof Date && y instanceof Date) ||
-       (x instanceof RegExp && y instanceof RegExp) ||
-       (x instanceof String && y instanceof String) ||
+    if (x instanceof Function)
+      return x === y;
+
+    if (x instanceof RegExp)
+        return x === y;
+
+     if ((x instanceof String && y instanceof String) ||
        (x instanceof Number && y instanceof Number)) {
         return x.toString() === y.toString();
     }
@@ -851,6 +854,9 @@ function objectEquals(x, y) {
         return true;
 
     if (Array.isArray(x) && Array.isArray(y) && x.length !== y.length) 
+        return false;
+
+    if (x instanceof Date)
         return false;
 
     // If they are strictly equal, they both need to be object at least
