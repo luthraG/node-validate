@@ -23,7 +23,7 @@ describe('isAlpha API Tests', function () {
             expect(isAlpha('Gaurav Luthra')).to.be.false;
         });
 
-        it('Gaurav2472 contains in valid alphabets', function () {
+        it('Gaurav2472 contains invalid alphabets', function () {
             expect(isAlpha('Gaurav2472')).to.be.false;
         });
     });
