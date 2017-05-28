@@ -57,31 +57,31 @@ describe('isBoolean API Tests', function () {
             expect(isBoolean(Infinity)).to.be.false;
         });
 
-        it('No parameters to method is a valid boolean value', function () {
+        it('No parameters to method is not a valid boolean value', function () {
             expect(isBoolean()).to.be.false;
         });
 
-        it('null is a valid boolean value', function () {
+        it('null is not a valid boolean value', function () {
             expect(isBoolean(null)).to.be.false;
         });
 
-        it('undefined is a valid boolean value', function () {
+        it('undefined is not a valid boolean value', function () {
             expect(isBoolean(undefined)).to.be.false;
         });
 
-        it('0/0 is a valid boolean value', function () {
+        it('0/0 is not a valid boolean value', function () {
             expect(isBoolean(0/0)).to.be.false;
         });
 
-        it('Infinity / Infinity is a valid boolean value', function () {
+        it('Infinity / Infinity is not a valid boolean value', function () {
             expect(isBoolean((Infinity / Infinity))).to.be.false;
         });
 
-        it('Infinity + (-Infinity) is a valid boolean value', function () {
+        it('Infinity + (-Infinity) is not a valid boolean value', function () {
             expect(isBoolean((Infinity + (-Infinity)))).to.be.false;
         });
 
-        it('0 * (-Infinity) is a valid boolean value', function () {
+        it('0 * (-Infinity) is not a valid boolean value', function () {
             expect(isBoolean((0 * (-Infinity)))).to.be.false;
         });
     });
