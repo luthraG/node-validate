@@ -874,7 +874,7 @@ function objectEquals(x, y) {
 // Check if the object has any method present inside it
 //
 // Argument(s):
-// obj : Object which needs to be checked ffor method presence
+// obj : Object which needs to be checked for method presence
 //
 // Examples:
 //     var o = { qwe : { asd : { zxc : 123 } } };
