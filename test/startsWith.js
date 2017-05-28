@@ -15,6 +15,10 @@ describe('Starts With API Tests', function () {
             expect(startsWith(null, '')).to.be.true;
         });
 
+        it('Empty string starts with null', function () {
+            expect(startsWith('', null)).to.be.true;
+        });
+
         it('HelloFoo starts with foo at position 5', function () {
             expect(startsWith('HelloFoo', 'Foo', 5)).to.be.true;
         });
@@ -59,6 +63,10 @@ describe('Starts With API Tests', function () {
     describe('Valid tests for starts with API for Array inputs', function () {
         it('[1, 2, 3, 4] starts with [1, 2, 3]', function () {
             expect(startsWith([1, 2, 3, 4], [1, 2, 3])).to.be.true;
+        });
+
+        it('hello starts with ["hello"]', function () {
+            expect(startsWith("hello", ["hello"])).to.be.true;
         });
 
         it('[1, 2, 3, 4] starts with [1, 2, 3, 4]', function () {
