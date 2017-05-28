@@ -33,19 +33,19 @@ describe('isAlphanumeric API Tests', function () {
     });
 
     describe('Invalid tests for isAlphanumeric API', function () {
-        it('null is not a valid alphabet', function () {
+        it('null is not a valid alphanumeric', function () {
             expect(isAlphanumeric(null)).to.be.false;
         });
 
-        it('undefined is not a valid alphabet', function () {
+        it('undefined is not a valid alphanumeric', function () {
             expect(isAlphanumeric(undefined)).to.be.false;
         });
 
-        it('empty string is not a alphabet', function () {
+        it('empty string is not a alphanumeric', function () {
             expect(isAlphanumeric('')).to.be.false;
         });
 
-        it('ᴁᴪᴙݝۺ contains invalid alphabet', function () {
+        it('ᴁᴪᴙݝۺ contains invalid alphanumeric', function () {
             expect(isAlphanumeric('ᴁᴪᴙݝۺ')).to.be.false;
         });
 
@@ -53,11 +53,11 @@ describe('isAlphanumeric API Tests', function () {
             expect(isAlphanumeric(247238)).to.be.false;
         });
 
-        it('new Object() is not a alphabet', function () {
+        it('new Object() is not a alphanumeric', function () {
             expect(isAlphanumeric(new Object())).to.be.false;
         });
 
-        it('Infinity is not a alphabet', function () {
+        it('Infinity is not a alphanumeric', function () {
             expect(isAlphanumeric(Infinity)).to.be.false;
         });
     });
