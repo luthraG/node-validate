@@ -52,5 +52,21 @@ describe('isSemver API Tests', function () {
         it('1.0.0-beta+exp.sha.5114f85. is not a semantic version number', function () {
             expect(isSemver('1.0.0-beta+exp.sha.5114f85.')).to.be.false;
         });
+
+        it('null is not a semantic version number', function () {
+            expect(isSemver(null)).to.be.false;
+        });
+
+        it('undefined is not a semantic version number', function () {
+            expect(isSemver(undefined)).to.be.false;
+        });
+
+        it('Empty string is not a semantic version number', function () {
+            expect(isSemver('')).to.be.false;
+        });
+
+        it('{} is not a semantic version number', function () {
+            expect(isSemver({})).to.be.false;
+        });
     });
 });
