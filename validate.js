@@ -175,7 +175,7 @@ function isBoolean(value) {
     if (isNull(value))
         return false;
 
-    return (['true', 'false', '1', '0'].indexOf(value.toLowerCase().toString()) >= 0);
+    return (['true', 'false', '1', '0'].indexOf(isString(value) ? value.toLowerCase().toString() : value.toString()) >= 0);
 }
 
 // ************************************************************************************************
