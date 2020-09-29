@@ -22,6 +22,8 @@ var          alpha  = /^[A-Z]+$/i,
             semver  = /^v?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$/,
           unixPath  = /^((?:\/[a-zA-Z0-9\.\:]+(?:_[a-zA-Z0-9\:\.]+)*(?:\-[\:a-zA-Z0-9\.]+)*)+\/?)$/,
            winPath  = /^[a-zA-Z]:\\(?:[^\\/:*?"<>|\r\n]+\\)*[^\\/:*?"<>|\r\n]*$/;
+               url  = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-z]{1,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/g;
+
 
 // https://en.wikipedia.org/wiki/Universally_unique_identifier#Definition
 var uuid = {
@@ -1797,6 +1799,25 @@ function isRGBColor(str) {
         return rgbColor.test(str);
 }
 
+// ************************************************************************************************
+//
+// isURL
+//
+// Check if the string is a URL
+//
+// Examples :
+//      isURL('https://google.com') //returns true
+//      isURL('http://google.com/abcdxyz') //returns true
+//      isURL('xyz')  // returns false
+//
+// ************************************************************************************************
+function isURL(str) {
+    if (isString(str))
+        return url.test(str);
+
+    return false;
+}
+
 
 // ************************************************************************************************
 //
@@ -1892,7 +1913,8 @@ exports = module.exports = {
     isWhiteSpace         : isWhiteSpace,
     isWinFilePath        : isWinFilePath,
     objectEquals         : objectEquals,
-    startsWith           : startsWith
+    startsWith           : startsWith,
+    isURL                : isURL
 };
 
 //
